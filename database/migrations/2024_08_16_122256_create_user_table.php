@@ -34,16 +34,10 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female', 'others'])->default("others");
             $table->enum('role', ['admin', 'user', 'editor'])->default("user");
             $table->boolean('is_blocked')->default(0);
+            $table->string('remember_token')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('rate_limits', function (Blueprint $table) {
-            $table->id();
-            $table->string('key')->unique('key');
-            $table->integer('attempts')->default(0);
-            $table->integer('expires_at');
-            $table->timestamps();
-        });
     }
 
     /**
@@ -54,6 +48,5 @@ return new class extends Migration
     public function down():void
     {
         Schema::dropIfExists("users");
-        Schema::dropIfExists("rate_limits");
     }
 };

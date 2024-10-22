@@ -15,6 +15,28 @@ use celionatti\Bolt\Helpers\FlashMessages\BootstrapFlashMessage;
     <link href="<?= asset("dist/css/style.css") ?>" rel="stylesheet">
     <link href="<?= asset("dist/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
 
+    <style type="text/css">
+        body {
+            position: relative;
+            background-image: url('/assets/img/background-auth.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            margin: 0;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+        }
+    </style>
+
     <title>Natti Nation | Home</title>
     <?php $this->content('header') ?>
 </head>

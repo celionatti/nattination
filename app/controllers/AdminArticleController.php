@@ -153,67 +153,6 @@ class AdminArticleController extends Controller
         $this->view->render("admin/articles/edit", $view);
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     if("POST" === $request->getMethod()) {
-    //         $article = new Article();
-
-    //         $fetchData = $article->find($id);
-
-    //         if (!$fetchData) {
-    //             toast("info", "Article Not Found!");
-    //             redirect(URL_ROOT . "/admin/articles/manage");
-    //         }
-
-    //         $rules = [
-    //             'title' => 'required',
-    //             'content' => 'required',
-    //             'tags' => 'required',
-    //             'thumbnail_caption' => 'required',
-    //             'contributors' => 'required',
-    //             'category_id' => 'required',
-    //             'status' => 'required',
-    //         ];
-
-    //         // Load and validate data
-    //         $attributes = $request->loadData();
-    //         $attributes['meta_title'] = Meta::MetaTitle($attributes['title'], $attributes['content']);
-    //         $attributes['meta_description'] = Meta::MetaDescription($attributes['content']);
-    //         $attributes['meta_keywords'] = Meta::MetaKeywords($attributes['title'], $attributes['content']);
-
-    //         if($request->get("ut") === "file") {
-    //             $upload = new Upload("uploads/articles");
-    //             $thumbnail = $upload->uploadFile("thumbnail");
-    //             if($thumbnail['success'] && !is_null($fetchData->thumbnail)) {
-    //                 $upload->delete($fetchData->thumbnail, true);
-    //             }
-    //             $attributes['thumbnail'] = $thumbnail['file'];
-
-    //             if($thumbnail['success']) {
-    //                 $image = new Image();
-    //                 $image->resize($attributes['thumbnail']);
-    //             }
-    //         }
-
-    //         if (!$request->validate($rules, $attributes)) {
-    //             storeSessionData('article_data', $attributes);
-    //             setFormMessage($request->getErrors());
-    //             redirect(URL_ROOT . "/admin/articles/create?ut={$request->get('ut')}");
-    //             return; // Ensure the method exits after redirect
-    //         }
-
-    //         if ($article->update($id, $attributes) && $thumbnail['success']) {
-    //             // Success: Redirect to manage page
-    //             // toast("success", "Article Updated Successfully");
-    //             redirect(URL_ROOT . "/admin/articles/manage");
-    //         } else {
-    //             // Failed to create: Redirect to create page
-    //             setFormMessage(['error' => 'Article update process failed!']);
-    //             redirect(URL_ROOT . "/admin/articles/manage");
-    //         }
-    //     }
-    // }
-
     public function update(Request $request, $id)
     {
         if("POST" !== $request->getMethod()) {
@@ -295,4 +234,63 @@ class AdminArticleController extends Controller
             redirect(URL_ROOT . "/admin/articles/manage");
         }
     }
+
+    // public function delete(Request $request, $id)
+    // {
+    //     $article = new Article();
+    //     $fetchData = $article->find($id);
+
+    //     // Article not found
+    //     if (!$fetchData) {
+    //         toast("info", "Article Not Found!");
+    //         redirect(URL_ROOT . "/admin/articles/manage");
+    //         return;
+    //     }
+
+    //     $upload = new Upload("uploads/articles");
+    //     if(!$upload->delete($fetchData->thumbnail)) {
+    //         setFormMessage(['error' => 'Thumbnail delete failed!']);
+    //     }
+
+    //     if($article->delete($id)) {
+    //         // toast("success", "User Deleted Successfully");
+    //         redirect(URL_ROOT . "/admin/articles/manage");
+    //     } else {
+    //         // Failed to create: Redirect to create page
+    //         setFormMessage(['error' => 'Article delete process failed!']);
+    //         redirect(URL_ROOT . "/admin/articles/manage");
+    //     }
+    // }
+
+    public function delete(Request $request, $id)
+    {
+        $article = new Article();
+        $fetchData = $article->find($id);
+
+        // Define the redirect URL once to avoid repetition
+        $redirectUrl = URL_ROOT . "/admin/articles/manage";
+
+        // Check if the article exists
+        if (!$fetchData) {
+            toast("info", "Article Not Found!");
+            return redirect($redirectUrl);
+        }
+
+        // Attempt to delete the thumbnail if it exists
+        $upload = new Upload("uploads/articles");
+        if (!$upload->delete($fetchData->thumbnail)) {
+            setFormMessage(['error' => 'Thumbnail delete failed!']);
+        }
+
+        // Delete the article
+        if ($article->delete($id)) {
+            toast("success", "Article Deleted Successfully");
+        } else {
+            setFormMessage(['error' => 'Article delete process failed!']);
+        }
+
+        // Redirect back to the articles management page in either case
+        return redirect($redirectUrl);
+    }
+
 }

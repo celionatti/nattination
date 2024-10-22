@@ -27,12 +27,15 @@ $bolt->router->group(['prefix' => '/', []], function($router) {
     $router->get('/', [SiteController::class, 'welcome']);
     $router->get('/about', [SiteController::class, 'about']);
     $router->get('/contact-us', [SiteController::class, 'contact']);
+
+    $router->get('/login', [AuthController::class, 'login']);
+    $router->post('/login', [AuthController::class, 'login_access']);
 });
 
 $bolt->router->get("/articles", [ArticleController::class, "articles"]);
 $bolt->router->get("/articles/{:id}", [ArticleController::class, "article"]);
 $bolt->router->get("/category/{:name}", [SiteController::class, "category"]);
-$bolt->router->get("/login", [AuthController::class, "login"]);
+// $bolt->router->get("/login", [AuthController::class, "login"]);
 
 /** Admin Routes */
 $bolt->router->get("/admin", [AdminController::class, "dashboard"]);

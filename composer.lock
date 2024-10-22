@@ -77,16 +77,16 @@
         },
         {
             "name": "celionatti/bolt",
-            "version": "v1.0.15",
+            "version": "v1.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/celionatti/bolt.git",
-                "reference": "8e5dfc66a29188cedeaadebdcec9bf935ce401ee"
+                "reference": "0848a223a2a4c366edaec43dabddeb8cd57b56ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/celionatti/bolt/zipball/8e5dfc66a29188cedeaadebdcec9bf935ce401ee",
-                "reference": "8e5dfc66a29188cedeaadebdcec9bf935ce401ee",
+                "url": "https://api.github.com/repos/celionatti/bolt/zipball/0848a223a2a4c366edaec43dabddeb8cd57b56ba",
+                "reference": "0848a223a2a4c366edaec43dabddeb8cd57b56ba",
                 "shasum": ""
             },
             "require": {
@@ -121,9 +121,9 @@
             "description": "Bolt is a popular open-source content management system (CMS) and application framework that is designed to be easy to use and flexible. It's known for its simplicity and speed, making it a good choice for developers looking to create websites and web applications quickly.",
             "support": {
                 "issues": "https://github.com/celionatti/bolt/issues",
-                "source": "https://github.com/celionatti/bolt/tree/v1.0.15"
+                "source": "https://github.com/celionatti/bolt/tree/v1.0.16"
             },
-            "time": "2024-10-05T10:59:19+00:00"
+            "time": "2024-10-10T17:01:23+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1471,16 +1471,16 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.9.1",
+            "version": "v6.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "039de174cd9c17a8389754d3b877a2ed22743e18"
+                "reference": "a7b17b42fa4887c92146243f3d2f4ccb962af17c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/039de174cd9c17a8389754d3b877a2ed22743e18",
-                "reference": "039de174cd9c17a8389754d3b877a2ed22743e18",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/a7b17b42fa4887c92146243f3d2f4ccb962af17c",
+                "reference": "a7b17b42fa4887c92146243f3d2f4ccb962af17c",
                 "shasum": ""
             },
             "require": {
@@ -1540,7 +1540,7 @@
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
             "support": {
                 "issues": "https://github.com/PHPMailer/PHPMailer/issues",
-                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.9.1"
+                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.9.2"
             },
             "funding": [
                 {
@@ -1548,7 +1548,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-25T22:23:28+00:00"
+            "time": "2024-10-09T10:07:50+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -1932,16 +1932,16 @@
         },
         {
             "name": "psr/log",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "79dff0b268932c640297f5208d6298f71855c03e"
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/79dff0b268932c640297f5208d6298f71855c03e",
-                "reference": "79dff0b268932c640297f5208d6298f71855c03e",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
             "require": {
@@ -1976,9 +1976,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.1"
+                "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
-            "time": "2024-08-21T13:31:24+00:00"
+            "time": "2024-09-11T13:17:53+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -2077,16 +2077,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v7.1.4",
+            "version": "v7.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "b61e464d7687bb7e8f677d5031c632bf3820df18"
+                "reference": "86e5296b10e4dec8c8441056ca606aedb8a3be0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/b61e464d7687bb7e8f677d5031c632bf3820df18",
-                "reference": "b61e464d7687bb7e8f677d5031c632bf3820df18",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/86e5296b10e4dec8c8441056ca606aedb8a3be0a",
+                "reference": "86e5296b10e4dec8c8441056ca606aedb8a3be0a",
                 "shasum": ""
             },
             "require": {
@@ -2154,7 +2154,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v7.1.4"
+                "source": "https://github.com/symfony/cache/tree/v7.1.5"
             },
             "funding": [
                 {
@@ -2170,7 +2170,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-12T09:59:40+00:00"
+            "time": "2024-09-17T09:16:35+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -2778,16 +2778,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v6.4.10",
+            "version": "v6.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "94041203f8ac200ae9e7c6a18fa6137814ccecc9"
+                "reference": "cf8360b8352b086be620fae8342c4d96e391a489"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/94041203f8ac200ae9e7c6a18fa6137814ccecc9",
-                "reference": "94041203f8ac200ae9e7c6a18fa6137814ccecc9",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/cf8360b8352b086be620fae8342c4d96e391a489",
+                "reference": "cf8360b8352b086be620fae8342c4d96e391a489",
                 "shasum": ""
             },
             "require": {
@@ -2853,7 +2853,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v6.4.10"
+                "source": "https://github.com/symfony/translation/tree/v6.4.12"
             },
             "funding": [
                 {
@@ -2869,7 +2869,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-26T12:30:32+00:00"
+            "time": "2024-09-16T06:02:54+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -3027,16 +3027,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v6.4.11",
+            "version": "v6.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "be37e7f13195e05ab84ca5269365591edd240335"
+                "reference": "762ee56b2649659380e0ef4d592d807bc17b7971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/be37e7f13195e05ab84ca5269365591edd240335",
-                "reference": "be37e7f13195e05ab84ca5269365591edd240335",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/762ee56b2649659380e0ef4d592d807bc17b7971",
+                "reference": "762ee56b2649659380e0ef4d592d807bc17b7971",
                 "shasum": ""
             },
             "require": {
@@ -3079,7 +3079,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v6.4.11"
+                "source": "https://github.com/symfony/yaml/tree/v6.4.12"
             },
             "funding": [
                 {
@@ -3095,7 +3095,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-12T09:55:28+00:00"
+            "time": "2024-09-17T12:47:12+00:00"
         },
         {
             "name": "twig/twig",
