@@ -36,11 +36,23 @@ class AdminArticleController extends Controller
         $article = new Article();
 
         $view = [
-            'articles' => $article::all()
+            'articles' => $article->allBy("status", "publish")
         ];
 
         $this->view->render("admin/articles/manage", $view);
     }
+
+    public function drafts()
+    {
+        $article = new Article();
+
+        $view = [
+            'articles' => $article->allBy("status", "drafts")
+        ];
+
+        $this->view->render("admin/articles/drafts", $view);
+    }
+
     public function create(Request $request)
     {
         $categories = new Category();
@@ -105,6 +117,9 @@ class AdminArticleController extends Controller
             }
 
             if (!$request->validate($rules, $attributes)) {
+                // delete uploaded thumbnail
+                $upload->delete($attributes['thumbnail']);
+
                 storeSessionData('article_data', $attributes);
                 setFormMessage($request->getErrors());
                 redirect(URL_ROOT . "/admin/articles/create?ut={$request->get('ut')}");
@@ -219,6 +234,9 @@ class AdminArticleController extends Controller
 
         // Validate request data
         if (!$request->validate($rules, $attributes)) {
+            // delete uploaded thumbnail
+            $upload->delete($attributes['thumbnail']);
+
             storeSessionData('article_data', $attributes);
             setFormMessage($request->getErrors());
             redirect(URL_ROOT . "/admin/articles/create?ut={$request->get('ut')}");
@@ -234,33 +252,6 @@ class AdminArticleController extends Controller
             redirect(URL_ROOT . "/admin/articles/manage");
         }
     }
-
-    // public function delete(Request $request, $id)
-    // {
-    //     $article = new Article();
-    //     $fetchData = $article->find($id);
-
-    //     // Article not found
-    //     if (!$fetchData) {
-    //         toast("info", "Article Not Found!");
-    //         redirect(URL_ROOT . "/admin/articles/manage");
-    //         return;
-    //     }
-
-    //     $upload = new Upload("uploads/articles");
-    //     if(!$upload->delete($fetchData->thumbnail)) {
-    //         setFormMessage(['error' => 'Thumbnail delete failed!']);
-    //     }
-
-    //     if($article->delete($id)) {
-    //         // toast("success", "User Deleted Successfully");
-    //         redirect(URL_ROOT . "/admin/articles/manage");
-    //     } else {
-    //         // Failed to create: Redirect to create page
-    //         setFormMessage(['error' => 'Article delete process failed!']);
-    //         redirect(URL_ROOT . "/admin/articles/manage");
-    //     }
-    // }
 
     public function delete(Request $request, $id)
     {

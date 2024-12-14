@@ -24,13 +24,10 @@ use celionatti\Bolt\Forms\BootstrapForm;
 <?php $this->start('content') ?>
 <?= renderComponent(CrumbsComponent::class, ['name' => 'Create Article']); ?>
 <section class="section">
-    <div class="py-2 text-center">
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-    </div>
 
-    <div class="row g-5 mb-3">
+    <div class="row g-5 mb-3 py-2">
         <div class="col-md-5 col-lg-4 order-md-last">
-            <img src="<?= get_image($article["thumbnail"]); ?>" alt="" class="mx-auto d-block preview" style="height:250px;width:300px;object-fit:cover;border-radius: 10px;cursor: pointer;">
+            <img src="<?= get_image($article["thumbnail"]); ?>" alt="<?= $article['thumbnail_caption'] ?>" class="mx-auto d-block preview" style="height:250px;width:300px;object-fit:cover;border-radius: 10px;cursor: pointer;">
         </div>
         <div class="col-md-7 col-lg-8">
             <form action="" method="post" enctype="multipart/form-data">

@@ -56,6 +56,7 @@ $bolt->router->group(['prefix' => '/admin/users', []], function($router) {
 /** Admin Articles Routes */
 $bolt->router->group(['prefix' => '/admin/articles', []], function($router) {
     $router->get('/manage', [AdminArticleController::class, 'manage']);
+    $router->get('/drafts', [AdminArticleController::class, 'drafts']);
     $router->get('/create', [AdminArticleController::class, 'create']);
     $router->post('/create', [AdminArticleController::class, 'insert']);
     $router->get('/edit/{:id}', [AdminArticleController::class, 'edit']);

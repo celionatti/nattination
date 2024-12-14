@@ -17,7 +17,7 @@ use PhpStrike\app\components\CrumbsComponent;
 
 
 <?php $this->start('content') ?>
-<?= renderComponent(CrumbsComponent::class, ['name' => 'Manage Articles']); ?>
+<?= renderComponent(CrumbsComponent::class, ['name' => 'Manage Users']); ?>
 
 <section class="section">
     <div class="d-flex justify-content-center align-items-center gap-3 border-bottom mb-2 pb-1">
