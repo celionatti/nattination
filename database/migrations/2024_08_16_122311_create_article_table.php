@@ -36,6 +36,7 @@ return new class extends Migration
             $table->string("thumbnail_caption");
             $table->string("contributors");
             $table->boolean("is_editor")->default(0);
+            $table->boolean("is_featured")->default(0);
             $table->string("meta_title");
             $table->string("meta_description");
             $table->string("meta_keywords");

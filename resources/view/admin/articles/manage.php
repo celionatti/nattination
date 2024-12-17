@@ -54,6 +54,10 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                     <td class="text-capitalize"><?= $article['contributors'] ?></td>
                     <td class="text-capitalize"><?= $article['status'] ?></td>
                     <td class="text-end">
+                        <a href="<?= URL_ROOT . "/admin/articles/editor/{$article['article_id']}" ?>" class="btn btn-secondary btn-sm" title="Editor"><i class="fa-solid fa-newspaper"></i></a>
+
+                        <a href="<?= URL_ROOT . "/admin/articles/featured/{$article['article_id']}" ?>" class="btn btn-success btn-sm" title="Featured"><i class="fa-solid fa-check"></i></a>
+
                         <a href="<?= URL_ROOT . "/admin/articles/edit/{$article['article_id']}?ut=file" ?>" class="btn btn-info btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
 
                         <a href="<?= URL_ROOT . "/admin/articles/delete/{$article['article_id']}" ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-alt"></i> Trash</a>

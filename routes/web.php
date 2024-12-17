@@ -35,7 +35,6 @@ $bolt->router->group(['prefix' => '/', []], function($router) {
 $bolt->router->get("/articles", [ArticleController::class, "articles"]);
 $bolt->router->get("/articles/{:id}", [ArticleController::class, "article"]);
 $bolt->router->get("/category/{:name}", [SiteController::class, "category"]);
-// $bolt->router->get("/login", [AuthController::class, "login"]);
 
 /** Admin Routes */
 $bolt->router->get("/admin", [AdminController::class, "dashboard"]);
@@ -62,6 +61,8 @@ $bolt->router->group(['prefix' => '/admin/articles', []], function($router) {
     $router->get('/edit/{:id}', [AdminArticleController::class, 'edit']);
     $router->post('/edit/{:id}', [AdminArticleController::class, 'update']);
     $router->get('/delete/{:id}', [AdminArticleController::class, 'delete']);
+    $router->get('/editor/{:id}', [AdminArticleController::class, 'editor']);
+    $router->get('/featured/{:id}', [AdminArticleController::class, 'featured']);
 });
 
 /** Admin Categories Routes */

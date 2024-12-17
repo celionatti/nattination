@@ -25,7 +25,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 <section class="section">
     <div class="d-flex justify-content-center align-items-center gap-3 border-bottom mb-2 pb-1">
         <a class="btn btn-outline-success px-4 py-1" href="<?= URL_ROOT . "/admin/articles/create?ut=file" ?>">Create</a>
-        <a class="btn btn-outline-warning px-4 py-1" href="<?= URL_ROOT . "/admin/articles/drafts" ?>">Drafts</a>
+        <a class="btn btn-outline-warning px-4 py-1" href="<?= URL_ROOT . "/admin/articles/manage" ?>">Manage</a>
         <a class="btn btn-outline-secondary px-4 py-1 disabled" aria-disabled="true">Menu</a>
     </div>
 

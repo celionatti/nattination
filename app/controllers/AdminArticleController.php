@@ -47,7 +47,7 @@ class AdminArticleController extends Controller
         $article = new Article();
 
         $view = [
-            'articles' => $article->allBy("status", "drafts")
+            'articles' => $article->allBy("status", "draft")
         ];
 
         $this->view->render("admin/articles/drafts", $view);
@@ -57,7 +57,7 @@ class AdminArticleController extends Controller
     {
         $categories = new Category();
 
-        $fetchCategories = $categories->all();
+        $fetchCategories = $categories->allBy("status", "active");
         $categoryOptions = [];
         foreach ($fetchCategories as $category) {
             $categoryOptions[$category['category_id']] = ucfirst($category['name']);
@@ -146,7 +146,7 @@ class AdminArticleController extends Controller
 
         $categories = new Category();
 
-        $fetchCategories = $categories->all();
+        $fetchCategories = $categories->allBy("status", "active");
         $categoryOptions = [];
         foreach ($fetchCategories as $category) {
             $categoryOptions[$category['category_id']] = ucfirst($category['name']);
@@ -246,6 +246,9 @@ class AdminArticleController extends Controller
         // Update the article
         if ($article->update($id, $attributes)) {
             toast("success", "Article Updated Successfully");
+            if($fetchData->status === "draft") {
+                redirect(URL_ROOT . "/admin/articles/drafts");
+            }
             redirect(URL_ROOT . "/admin/articles/manage");
         } else {
             setFormMessage(['error' => 'Article update process failed!']);
@@ -280,6 +283,68 @@ class AdminArticleController extends Controller
             setFormMessage(['error' => 'Article delete process failed!']);
         }
 
+        // Redirect back to the articles management page in either case
+        return redirect($redirectUrl);
+    }
+
+    public function editor(Request $request, $id)
+    {
+        $article = new Article();
+        $fetchData = $article->find($id);
+
+        // Define the redirect URL once to avoid repetition
+        $redirectUrl = URL_ROOT . "/admin/articles/manage";
+
+        // Check if the article exists
+        if (!$fetchData) {
+            toast("info", "Article Not Found!");
+            return redirect($redirectUrl);
+        }
+
+        $editorCount = $article->editor_count();
+
+        if($editorCount >= 2) {
+            // Remove the is_editor and selecting the oldest updated
+            $article->remove_oldest_editor();
+        }
+        $updatedArticle = $article->update_editor($id);
+
+        if($updatedArticle) {
+            toast("success", "Article Editor Picked Successfully");
+        } else {
+            toast("error", "Error Occured, Try Again Later");
+        }
+        // Redirect back to the articles management page in either case
+        return redirect($redirectUrl);
+    }
+
+    public function featured(Request $request, $id)
+    {
+        $article = new Article();
+        $fetchData = $article->find($id);
+
+        // Define the redirect URL once to avoid repetition
+        $redirectUrl = URL_ROOT . "/admin/articles/manage";
+
+        // Check if the article exists
+        if (!$fetchData) {
+            toast("info", "Article Not Found!");
+            return redirect($redirectUrl);
+        }
+
+        $editorCount = $article->editor_count();
+
+        if($editorCount >= 2) {
+            // Remove the is_editor and selecting the oldest updated
+            $article->remove_oldest_editor();
+        }
+        $updatedArticle = $article->update_editor($id);
+
+        if($updatedArticle) {
+            toast("success", "Article Editor Picked Successfully");
+        } else {
+            toast("error", "Error Occured, Try Again Later");
+        }
         // Redirect back to the articles management page in either case
         return redirect($redirectUrl);
     }
