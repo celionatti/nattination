@@ -55,6 +55,7 @@ class AdminArticleController extends Controller
 
     public function create(Request $request)
     {
+        $article = new Article();
         $categories = new Category();
 
         $fetchCategories = $categories->allBy("status", "active");
@@ -62,6 +63,8 @@ class AdminArticleController extends Controller
         foreach ($fetchCategories as $category) {
             $categoryOptions[$category['category_id']] = ucfirst($category['name']);
         }
+
+        $is_editor = $article->editor_count();
 
         $view = [
             'errors' => getFormMessage(),
@@ -71,7 +74,12 @@ class AdminArticleController extends Controller
                 'draft' => 'Draft',
                 'publish' => 'Publish',
             ],
+            'editorOpts' => [
+                '1' => 'Yes',
+                '0' => 'No',
+            ],
             'upload_type' => $request->get('ut'),
+            'is_editor' => $is_editor,
         ];
 
         unsetSessionArrayData(['article_data']);
@@ -160,6 +168,10 @@ class AdminArticleController extends Controller
                 'draft' => 'Draft',
                 'publish' => 'Publish',
             ],
+            'editorOpts' => [
+                '1' => 'Yes',
+                '0' => 'No',
+            ],
             'upload_type' => $request->get('ut'),
         ];
 
@@ -244,7 +256,7 @@ class AdminArticleController extends Controller
         }
 
         // Update the article
-        if ($article->update($id, $attributes)) {
+        if ($article->update($attributes, $id)) {
             toast("success", "Article Updated Successfully");
             if($fetchData->status === "draft") {
                 redirect(URL_ROOT . "/admin/articles/drafts");
@@ -332,16 +344,16 @@ class AdminArticleController extends Controller
             return redirect($redirectUrl);
         }
 
-        $editorCount = $article->editor_count();
+        $featuredCount = $article->featured_count();
 
-        if($editorCount >= 2) {
+        if($featuredCount >= 1) {
             // Remove the is_editor and selecting the oldest updated
-            $article->remove_oldest_editor();
+            $article->remove_oldest_featured();
         }
-        $updatedArticle = $article->update_editor($id);
+        $updatedArticle = $article->update_featured($id);
 
         if($updatedArticle) {
-            toast("success", "Article Editor Picked Successfully");
+            toast("success", "Article Featured Picked Successfully");
         } else {
             toast("error", "Error Occured, Try Again Later");
         }

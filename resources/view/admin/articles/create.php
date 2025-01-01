@@ -63,6 +63,12 @@ use celionatti\Bolt\Forms\BootstrapForm;
 
                     <?= BootstrapForm::inputField("Contributors", "contributors", old_value("contributors", $article["contributors"] ?? ''), ['class' => 'form-control'], ['class' => 'col-6'], $errors) ?>
 
+                    <?php if($is_editor['count'] < 2): ?>
+                    <hr class="mt-4 border border-danger">
+
+                    <?= BootstrapForm::selectField("Editor Pick", "is_editor", $article["is_editor"] ?? '', $editorOpts, ['class' => 'form-control'], ['class' => 'col-sm-12 mb-3'], $errors) ?>
+                    <?php endif; ?>
+
                     <?= BootstrapForm::selectField("Status", "status", $article["status"] ?? '', $statusOpts, ['class' => 'form-control'], ['class' => 'col-sm-12 mb-3'], $errors) ?>
 
                 </div>

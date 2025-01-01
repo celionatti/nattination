@@ -26,77 +26,31 @@ use PhpStrike\app\components\BannerComponent;
         </div>
         <div class="row posts-entry">
             <div class="col-lg-8">
-                <div class="blog-entry d-flex blog-entry-search-item">
+                <div class="blog-entry d-flex blog-entry-search-item shadow mt-3 mb-4 p-2">
                     <a href="single.html" class="img-link me-4">
-                        <img src="images/img_1_sq.jpg" alt="Image" class="img-fluid">
+                        <img src="<?= get_image() ?>" alt="Image" class="img-fluid">
                     </a>
                     <div>
-                        <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-                        <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+                        <span class="date">Apr. 14th, 2022 &bullet; <a href="#" class="text-danger">Business</a></span>
+                        <h2><a href="single.html" class="text-black">Thought you loved Python? Wait until you meet Rust</a></h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-                        <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
+                        <p><a href="single.html" class="btn btn-sm btn-outline-dark">Read More</a></p>
                     </div>
                 </div>
 
-                <div class="blog-entry d-flex blog-entry-search-item">
-                    <a href="single.html" class="img-link me-4">
-                        <img src="images/img_2_sq.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <div>
-                        <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-                        <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-                        <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="blog-entry d-flex blog-entry-search-item">
-                    <a href="single.html" class="img-link me-4">
-                        <img src="images/img_3_sq.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <div>
-                        <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-                        <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-                        <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="blog-entry d-flex blog-entry-search-item">
-                    <a href="single.html" class="img-link me-4">
-                        <img src="images/img_4_sq.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <div>
-                        <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-                        <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-                        <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="blog-entry d-flex blog-entry-search-item">
-                    <a href="single.html" class="img-link me-4">
-                        <img src="images/img_5_sq.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <div>
-                        <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-                        <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-                        <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="row text-start pt-5 border-top">
-                    <div class="col-md-12">
-                        <div class="custom-pagination">
-                            <span>1</span>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <span>...</span>
-                            <a href="#">15</a>
-                        </div>
-                    </div>
+                <div class="d-flex justify-content-center align-items-center text-start pt-5 border-top">
+                    <nav class="">
+                        <ul class="pagination">
+                            <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">...</a></li>
+                            <li class="page-item"><a href="#" class="page-link">15</a></li>
+                            <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+                        </ul>
+                    </nav>
                 </div>
 
             </div>
@@ -113,10 +67,10 @@ use PhpStrike\app\components\BannerComponent;
                 <div class="sidebar-box">
                     <h3 class="heading">Popular Posts</h3>
                     <div class="post-entry-sidebar">
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <img src="images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
+                        <ul class="list-unstyled">
+                            <li class="my-2">
+                                <a href="" class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top">
+                                    <img src="<?= get_image() ?>" class="me-2 rounded" width="100">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                                         <div class="post-meta">
@@ -125,20 +79,9 @@ use PhpStrike\app\components\BannerComponent;
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="">
-                                    <img src="images/img_2_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="images/img_3_sq.jpg" alt="Image placeholder" class="me-4 rounded">
+                            <li class="my-2">
+                                <a href="" class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top">
+                                    <img src="<?= get_image() ?>" class="me-2 rounded" width="100">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
                                         <div class="post-meta">
@@ -151,36 +94,6 @@ use PhpStrike\app\components\BannerComponent;
                     </div>
                 </div>
                 <!-- END sidebar-box -->
-
-                <div class="sidebar-box">
-                    <h3 class="heading">Categories</h3>
-                    <ul class="categories">
-                        <li><a href="#">Food <span>(12)</span></a></li>
-                        <li><a href="#">Travel <span>(22)</span></a></li>
-                        <li><a href="#">Lifestyle <span>(37)</span></a></li>
-                        <li><a href="#">Business <span>(42)</span></a></li>
-                        <li><a href="#">Adventure <span>(14)</span></a></li>
-                    </ul>
-                </div>
-                <!-- END sidebar-box -->
-
-                <div class="sidebar-box">
-                    <h3 class="heading">Tags</h3>
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Freelancing</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Freelancing</a></li>
-                    </ul>
-                </div>
 
             </div>
         </div>

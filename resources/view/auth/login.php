@@ -18,7 +18,7 @@ use celionatti\Bolt\Forms\BootstrapForm;
 
 <?php $this->start('content') ?>
 
-<section class="container bg-white my-5 shadow rounded-2">
+<section class="container bg-white my-5 shadow rounded-2 p-5">
     <div class="row">
         <div class="col-8 py-5 px-4">
             <h4 class="font-monospace fw-bold text-uppercase text-decoration-underline text-end text-primary-emphasis pb-2">Login Account</h4>
@@ -33,7 +33,9 @@ use celionatti\Bolt\Forms\BootstrapForm;
 
                 <hr class="my-2">
 
-                <button class="w-100 btn btn-primary btn-sm py-2" type="submit">Login</button>
+                <p class="text-center text-dark-emphasis">Not a Registered User, You can join us here. <a href="<?= URL_ROOT . "/auth/register" ?>">Register</a></p>
+
+                <button class="w-100 btn btn-dark btn-sm py-2" type="submit">Access Account</button>
             </form>
         </div>
         <div class="col-4 my-auto">

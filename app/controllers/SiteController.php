@@ -16,13 +16,20 @@ use celionatti\Bolt\Http\Request;
 
 use celionatti\Bolt\Controller;
 
+use PhpStrike\app\models\Article;
+use PhpStrike\app\models\Category;
+
 class SiteController extends Controller
 {
     public function welcome()
     {
+        $article = new Article();
+
         $view = [
-            'name' => 'Lugard Fredrick',
-            'country' => 'UK'
+            'editors' => $article->allBy("is_editor", 1),
+            'featured' => $article->allBy("is_featured", 1)[0],
+            'articles' => $article->article_lists(),
+            'recents' => $article->recent_articles(),
         ];
 
         $this->view->render("welcome", $view);

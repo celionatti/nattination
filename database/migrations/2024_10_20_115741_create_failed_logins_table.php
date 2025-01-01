@@ -27,7 +27,7 @@ return new class extends Migration
             $table->id();
             $table->string('email')->nullable();
             $table->integer('attempts')->default(0);
-            $table->integer('blocked_until')->nullable();
+            $table->datetime('blocked_until')->nullable();
             $table->timestamps();
         });
     }

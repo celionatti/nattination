@@ -12,7 +12,6 @@ use celionatti\Bolt\Helpers\FlashMessages\BootstrapFlashMessage;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="<?= asset("dist/css/style.css") ?>" rel="stylesheet">
     <link href="<?= asset("dist/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
 
     <style type="text/css">
@@ -24,16 +23,6 @@ use celionatti\Bolt\Helpers\FlashMessages\BootstrapFlashMessage;
             background-position: center center;
             background-attachment: fixed;
             margin: 0;
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
         }
     </style>
 

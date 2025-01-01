@@ -134,7 +134,7 @@ class AdminCategoryController extends Controller
                 return; // Ensure the method exits after redirect
             }
 
-            if ($category->update($id, $attributes)) {
+            if ($category->update($attributes, $id)) {
                 // Success: Redirect to manage page
                 // toast("success", "Category Updated Successfully");
                 redirect(URL_ROOT . "/admin/categories/manage");

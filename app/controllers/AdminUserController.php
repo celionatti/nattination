@@ -158,7 +158,7 @@ class AdminUserController extends Controller
                 return; // Ensure the method exits after redirect
             }
 
-            if ($user->update($id, $attributes)) {
+            if ($user->update($attributes, $id)) {
                 // Success: Redirect to manage page
                 // toast("success", "User Updated Successfully");
                 redirect(URL_ROOT . "/admin/users/manage");
