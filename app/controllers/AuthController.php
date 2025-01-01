@@ -28,6 +28,10 @@ class AuthController extends Controller
     {
         $this->view->setLayout("auth");
         $this->auth = new Auth();
+        $this->setCurrentUser(user());
+        if($this->currentUser) {
+            redirect(URL_ROOT);
+        }
     }
 
     public function register_view(Request $request)

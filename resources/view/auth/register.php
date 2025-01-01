@@ -21,7 +21,10 @@ use celionatti\Bolt\Forms\BootstrapForm;
 <section class="container bg-white my-5 shadow rounded-2 p-1">
     <div class="row">
         <div class="col-8 py-2 px-4">
-            <h4 class="font-monospace fw-bold text-uppercase text-decoration-underline text-end text-primary-emphasis pb-2">Create an Account</h4>
+            <div class="d-flex justify-content-end align-items-end gap-3">
+                <a href="<?= URL_ROOT ?>" class="h4 font-monospace fw-bold text-uppercase text-decoration-underline text-end text-primary-emphasis pb-2 mx-3"><i class="fa-solid fa-home"></i></a>
+                <h4 class="font-monospace fw-bold text-uppercase text-decoration-underline text-end text-primary-emphasis pb-2">Create an Account</h4>
+            </div>
 
             <form action="" method="post">
                 <div class="row g-3">

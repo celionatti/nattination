@@ -16,6 +16,8 @@ $category = new Category();
 
 $categories = $category->allBy("status", "active");
 
+$user = user();
+
 ?>
 
 <div class="container">
@@ -28,10 +30,16 @@ $categories = $category->allBy("status", "active");
         <a class="blog-header-logo text-body-emphasis text-decoration-none" href="<?= URL_ROOT ?>"><span class="text-danger">Natti</span>Nation<span class="text-danger">.</span></a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="link-secondary" href="#" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+        <?php if($user): ?>
+        <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="Search">
+          <i class="fa-solid fa-user"></i> Amisu Usman
         </a>
+        <a class="text-danger-emphasis text-decoration-none ms-3" href="<?= URL_ROOT . "/logout" ?>" aria-label="Search">
+          <i class="fa-solid fa-power-off"></i>
+        </a>
+        <?php else: ?>
         <a class="btn btn-sm btn-outline-secondary" href="<?= URL_ROOT . "/auth/register" ?>">Sign up</a>
+        <?php endif; ?>
       </div>
     </div>
   </header>

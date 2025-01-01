@@ -19,8 +19,15 @@ use celionatti\Bolt\Controller;
 use PhpStrike\app\models\Article;
 use PhpStrike\app\models\Category;
 
+use celionatti\Bolt\Authentication\Auth;
+
 class SiteController extends Controller
 {
+    public function onConstruct(): void
+    {
+        // $this->setCurrentUser(user());
+    }
+
     public function welcome()
     {
         $article = new Article();

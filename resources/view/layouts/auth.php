@@ -14,6 +14,8 @@ use celionatti\Bolt\Helpers\FlashMessages\BootstrapFlashMessage;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= asset("dist/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?= asset("dist/css/all.min.css") ?>">
+
     <style type="text/css">
         body {
             position: relative;
