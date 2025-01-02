@@ -29,6 +29,10 @@ class AdminArticleController extends Controller
     public function onConstruct(): void
     {
         $this->view->setLayout("admin");
+        $this->setCurrentUser(user());
+        if(!$this->currentUser) {
+            redirect(URL_ROOT . "/login");
+        }
     }
 
     public function manage()
@@ -102,16 +106,16 @@ class AdminArticleController extends Controller
                 'contributors' => 'required',
                 'category_id' => 'required',
                 'status' => 'required',
-                // 'user_id' => 'required',
+                'user_id' => 'required',
             ];
 
             // Load and validate data
             $attributes = $request->loadData();
             $attributes['article_id'] = bv_uuid();
-            $attributes['user_id'] = null;
-            $attributes['meta_title'] = Meta::MetaTitle($attributes['title'], $attributes['content']);
-            $attributes['meta_description'] = Meta::MetaDescription($attributes['content']);
-            $attributes['meta_keywords'] = Meta::MetaKeywords($attributes['title'], $attributes['content']);
+            $attributes['user_id'] = $this->currentUser['user_id'] ?? null;
+            $attributes['meta_title'] = strtolower(Meta::MetaTitle($attributes['title'], $attributes['content']));
+            $attributes['meta_description'] = strtolower(Meta::MetaDescription($attributes['content']));
+            $attributes['meta_keywords'] = strtolower(Meta::MetaKeywords($attributes['title'], $attributes['content']));
 
             if($request->get("ut") === "file") {
                 $upload = new Upload("uploads/articles");

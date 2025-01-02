@@ -27,7 +27,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                     <h1 class="mb-4"><?= $article['title'] ?></h1>
                     <div class="align-items-center text-center">
                         <figure class="mb-2 me-3 d-inline-block"><img src="<?= get_image("", "avatar") ?>" alt="Image" class="rounded-circle" width="40" height="40"></figure>
-                        <span class="d-inline-block mt-1 text-capitalize">Authors: <?= $article['contributors'] ?></span>
+                        <span class="d-inline-block mt-1 text-capitalize">Contributors: <?= $article['contributors'] ?></span>
                         <span>&nbsp;-&nbsp; <?= TimeDateUtils::create($article['created_at'])->toCustomFormat("F jS, Y") ?></span>
                     </div>
                 </div>

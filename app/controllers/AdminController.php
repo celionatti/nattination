@@ -22,6 +22,10 @@ class AdminController extends Controller
     public function onConstruct(): void
     {
         $this->view->setLayout("admin");
+        $this->setCurrentUser(user());
+        if(!$this->currentUser) {
+            redirect(URL_ROOT . "/login");
+        }
     }
 
     public function dashboard()
