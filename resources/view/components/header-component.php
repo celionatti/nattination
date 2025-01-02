@@ -34,7 +34,7 @@ $user = user();
         <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="Search">
           <i class="fa-solid fa-user"></i> Amisu Usman
         </a>
-        <a class="text-danger-emphasis text-decoration-none ms-3" href="<?= URL_ROOT . "/logout" ?>" aria-label="Search">
+        <a class="text-danger text-decoration-none ms-3" href="<?= URL_ROOT . "/logout" ?>" aria-label="Search">
           <i class="fa-solid fa-power-off"></i>
         </a>
         <?php else: ?>

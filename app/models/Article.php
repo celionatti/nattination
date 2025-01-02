@@ -19,6 +19,16 @@ class Article extends Model
     protected $primaryKey = 'article_id';
     protected $fillable = ['article_id', 'title', 'content', 'tags', 'user_id', 'category_id', 'thumbnail', 'thumbnail_caption', 'meta_title', 'meta_description', 'meta_keywords', 'contributors', 'is_editor', 'is_featured', 'views', 'status'];
 
+    public function search($search)
+    {
+        return $this->query("SELECT * FROM articles WHERE title LIKE '%$search%' OR content LIKE '%$search%' OR tags LIKE '%$search%' AND status = :status;", ['status' => 'publish'], "assoc")['result'];
+    }
+
+    public function article_author($id)
+    {
+        return $this->query("SELECT name FROM users WHERE user_id = (SELECT user_id FROM articles WHERE article_id = :id);", ['id' => $id], "assoc")['result'][0];
+    }
+
     public function recent_articles()
     {
         return $this->query("SELECT * FROM articles WHERE status = 'publish' ORDER BY created_at DESC LIMIT 5;", [], "assoc")['result'];

@@ -35,6 +35,7 @@ return new class extends Migration
             $table->enum('role', ['admin', 'user', 'editor'])->default("user");
             $table->boolean('is_blocked')->default(0);
             $table->string('remember_token')->nullable();
+            $table->string('social_links')->nullable();
             $table->timestamps();
         });
 

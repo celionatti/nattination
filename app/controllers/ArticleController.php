@@ -57,6 +57,7 @@ class ArticleController extends Controller
             'article' => $article->findBy(['article_id' => $id])->toArray(),
             'populars' => $article->popular_articles($id),
             'mores' => $article->more_articles($id),
+            'author' => $article->article_author($id),
         ];
 
         $this->view->render("pages/article", $view);

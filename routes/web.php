@@ -7,6 +7,7 @@ use PhpStrike\app\controllers\AuthController;
 use PhpStrike\app\controllers\SiteController;
 use PhpStrike\app\controllers\AdminController;
 use PhpStrike\app\controllers\ArticleController;
+use PhpStrike\app\controllers\CategoryController;
 use PhpStrike\app\controllers\AdminArticleController;
 use PhpStrike\app\controllers\AdminCategoryController;
 use PhpStrike\app\controllers\AdminUserController;
@@ -27,6 +28,7 @@ $bolt->router->group(['prefix' => '/', []], function($router) {
     $router->get('/', [SiteController::class, 'welcome']);
     $router->get('/about', [SiteController::class, 'about']);
     $router->get('/contact-us', [SiteController::class, 'contact']);
+    $router->get('/search', [SiteController::class, 'search']);
 
     $router->get('/auth/register', [AuthController::class, 'register_view']);
     $router->post('/auth/register', [AuthController::class, 'register']);
@@ -37,7 +39,7 @@ $bolt->router->group(['prefix' => '/', []], function($router) {
 
 $bolt->router->get("/articles", [ArticleController::class, "articles"]);
 $bolt->router->get("/articles/{:id}", [ArticleController::class, "article"]);
-$bolt->router->get("/categories/view/{:id}", [SiteController::class, "category"]);
+$bolt->router->get("/categories/view/{:id}", [CategoryController::class, "category"]);
 
 /** Admin Routes */
 $bolt->router->get("/admin", [AdminController::class, "dashboard"]);

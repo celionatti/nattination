@@ -62,19 +62,21 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
             <div class="col-md-12 col-lg-4 sidebar">
 
+                <?php if($author): ?>
                 <div class="sidebar-box">
                     <div class="bio text-center">
                         <img src="<?= get_image("", "avatar") ?>" alt="Image Placeholder" class="img-fluid mb-3">
                         <div class="bio-body">
-                            <h2>Hannah Anderson</h2>
+                            <h2 class="text-uppercase"><?= $author['name'] ?></h2>
                             <p class="social">
-                                <a href="#" class="p-2"><span class="fa-brands fa-facebook"></span></a>
-                                <a href="#" class="p-2"><span class="fa-brands fa-twitter"></span></a>
-                                <a href="#" class="p-2"><span class="fa-brands fa-instagram"></span></a>
+                                <a href="#" class="p-2 text-primary-emphasis"><span class="fa-brands fa-facebook"></span></a>
+                                <a href="#" class="p-2 text-dark"><span class="fa-brands fa-square-x-twitter"></span></a>
+                                <a href="#" class="p-2 text-primary-emphasis"><span class="fa-brands fa-instagram"></span></a>
                             </p>
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
                 <!-- END sidebar-box -->
                 <div class="sidebar-box">
                     <h3 class="heading">Popular Posts</h3>

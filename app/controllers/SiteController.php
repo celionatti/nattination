@@ -60,12 +60,18 @@ class SiteController extends Controller
         $this->view->render("contact", $view);
     }
 
-    public function category()
+    public function search(Request $request)
     {
+        $article = new Article();
+
+        $search = $request->get("query");
+
         $view = [
-            
+            'articles' => $article->search($search),
+            'search' => $search,
+            'recents' => $article->recent_articles(),
         ];
 
-        $this->view->render("pages/category", $view);
+        $this->view->render("pages/search", $view);
     }
 }
