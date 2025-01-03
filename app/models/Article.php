@@ -78,7 +78,7 @@ class Article extends Model
 
     public function update_featured($id)
     {
-        return $this->query("UPDATE articles SET is_featured = 1 WHERE article_id = :id;", ['id' => $id], "assoc")['result'];
+        return $this->query("UPDATE articles SET is_featured = 1, is_editor = 0 WHERE article_id = :id;", ['id' => $id], "assoc")['result'];
     }
 
     public function increase_view($id)

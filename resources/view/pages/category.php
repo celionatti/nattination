@@ -39,7 +39,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                 <?php foreach($categories as $category): ?>
                 <div class="blog-entry d-flex blog-entry-search-item shadow mt-3 mb-4 p-2">
                     <a href="<?= URL_ROOT . "/articles/{$category['article_id']}" ?>" class="img-link me-4">
-                        <img src="<?= get_image($category['thumbnail']) ?>" alt="Image" class="" height="300" width="350">
+                        <img src="<?= get_image($category['thumbnail']) ?>" alt="Image" class="" height="300" width="250">
                     </a>
                     <div>
                         <span class="date"><?= TimeDateUtils::create($category['created_at'])->toCustomFormat("F jS, Y") ?> &bullet; <a class="text-danger"><?= $category['tags'] ?></a></span>

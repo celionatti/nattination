@@ -20,9 +20,12 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
 <?php $this->start('content') ?>
 <main class="container">
+  <?php if($featured): ?>
     <?= renderComponent(BannerComponent::class, $featured); ?>
+  <?php endif; ?>
 
     <div class="row mb-2">
+      <?php if($editors): ?>
       <?php foreach($editors as $editor): ?>
         <div class="col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -42,6 +45,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
           </div>
         </div>
       <?php endforeach; ?>
+      <?php endif; ?>
     </div>
   <!-- Card End -->
 
@@ -51,6 +55,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
         From the Firehose
       </h3>
 
+      <?php if($articles): ?>
       <?php foreach($articles as $article): ?>
       <article class="blog-post border-bottom border-2 border-info shadow p-2">
         <h2 class="display-5 link-body-emphasis mb-1"><a href="<?= URL_ROOT . "/articles/{$article['article_id']}" ?>" class="link-body-emphasis text-decoration-none"><?= $article['title'] ?></a></h2>
@@ -75,6 +80,9 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
         <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
         <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
       </nav>
+      <?php else: ?>
+        <h4 class="text-secondary-emphasis text-center my-4">No Articles Found!</h4>
+      <?php endif; ?>
 
     </div>
 

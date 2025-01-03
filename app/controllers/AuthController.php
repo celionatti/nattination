@@ -28,14 +28,15 @@ class AuthController extends Controller
     {
         $this->view->setLayout("auth");
         $this->auth = new Auth();
-        $this->setCurrentUser(user());
-        if($this->currentUser) {
-            redirect(URL_ROOT);
-        }
     }
 
     public function register_view(Request $request)
     {
+        $this->setCurrentUser(user());
+        if($this->currentUser) {
+            redirect(URL_ROOT);
+        }
+
         $view = [
             'errors' => getFormMessage(),
             'user' => retrieveSessionData("auth_data"),
@@ -53,6 +54,11 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        $this->setCurrentUser(user());
+        if($this->currentUser) {
+            redirect(URL_ROOT);
+        }
+
         // Ensure the method is POST
         if ("POST" !== $request->getMethod()) {
             setFormMessage(['error' => 'Invalid request method.']);
@@ -101,6 +107,11 @@ class AuthController extends Controller
 
     public function login(Request $request, Response $reponse)
     {
+        $this->setCurrentUser(user());
+        if($this->currentUser) {
+            redirect(URL_ROOT);
+        }
+
         $view = [
             'errors' => getFormMessage(),
             'user' => retrieveSessionData("auth_data"),
@@ -113,6 +124,11 @@ class AuthController extends Controller
 
     public function login_access(Request $request)
     {
+        $this->setCurrentUser(user());
+        if($this->currentUser) {
+            redirect(URL_ROOT);
+        }
+
         // Validation rules
         $rules = [
             'email' => 'required|email',
@@ -138,52 +154,13 @@ class AuthController extends Controller
         }
     }
 
-    // public function login_access(Request $request)
-    // {
-    //     //     // Validation rules
-    //     $rules = [
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ];
+    public function logout(Request $request)
+    {
+        $this->auth->logout();
+        toast("success", "Logout successfully!");
+        FlashMessage::setMessage("Logout successfully!", "success");
+        redirect(URL_ROOT);
 
-    //     $email = $request->only(['email'])['email'];
-    //     $password = $request->only(['password'])['password'];
-
-    //     // Check if the user is blocked due to failed login attempts
-    //     if ($this->authService->isBlocked($email)) {
-    //         $waitTime = $this->authService->getRemainingBlockTime($email);
-    //         setFormMessage("Too many failed login attempts. Please try again in {$waitTime} minutes.");
-    //         redirect(URL_ROOT . "/login", 429);
-    //         return;
-    //     }
-
-    //     // Attempt to log in the user
-    //     if ($this->authService->attemptLogin($email, $password)) {
-    //         dump("Here");
-    //         // Reset failed attempts on successful login
-    //         $this->authService->resetFailedAttempts($email);
-    //         // Redirect to the dashboard or another route
-    //         toast("success", "Logged In");
-    //         redirect(URL_ROOT . "/admin");
-    //         return;
-    //     } else {
-    //         // Increment failed attempts
-    //         $this->authService->incrementFailedAttempts($email);
-    //         dump("Else Here");
-
-    //         if ($this->authService->hasReachedMaxAttempts($email)) {
-    //             // Block the user for 5 minutes
-    //             $this->authService->blockUser($email);
-
-    //             setFormMessage("Too many failed login attempts. Please try again in 5 minutes.");
-    //             redirect(URL_ROOT . "/login", 429);
-    //             return;
-    //         }
-
-    //         setFormMessage("Invalid credentials. Please try again.");
-    //         redirect(URL_ROOT . "/login", 401);
-    //         return;
-    //     }
-    // }
+    }
 
 }
