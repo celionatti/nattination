@@ -76,10 +76,10 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
       </article>
       <?php endforeach; ?>
 
-      <nav class="blog-pagination" aria-label="Pagination">
-        <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
-        <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
-      </nav>
+      <div class="d-flex justify-content-center align-items-center text-start">
+        <?= $pagination ?>
+      </div>
+
       <?php else: ?>
         <h4 class="text-secondary-emphasis text-center my-4">No Articles Found!</h4>
       <?php endif; ?>

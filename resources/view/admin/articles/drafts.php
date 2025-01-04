@@ -20,7 +20,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
 
 <?php $this->start('content') ?>
-<?= renderComponent(CrumbsComponent::class, ['name' => 'Manage Articles']); ?>
+<?= renderComponent(CrumbsComponent::class, ['name' => 'Draft Articles']); ?>
 
 <section class="section">
     <div class="d-flex justify-content-center align-items-center gap-3 border-bottom mb-2 pb-1">

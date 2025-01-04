@@ -55,16 +55,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
                 <div class="d-flex justify-content-center align-items-center text-start pt-5 border-top">
                     <nav class="">
-                        <ul class="pagination">
-                            <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">...</a></li>
-                            <li class="page-item"><a href="#" class="page-link">15</a></li>
-                            <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                        </ul>
+                        <?= $pagination ?>
                     </nav>
                 </div>
 
