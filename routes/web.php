@@ -11,6 +11,7 @@ use PhpStrike\app\controllers\CategoryController;
 use PhpStrike\app\controllers\AdminArticleController;
 use PhpStrike\app\controllers\AdminCategoryController;
 use PhpStrike\app\controllers\AdminUserController;
+use PhpStrike\app\controllers\AdminAccountController;
 
 /** @var Bolt $bolt */
 
@@ -47,6 +48,14 @@ $bolt->router->get("/categories/view/{:id}", [CategoryController::class, "catego
 $bolt->router->get("/admin", [AdminController::class, "dashboard"]);
 $bolt->router->group(['prefix' => '/admin', []], function($router) {
     $router->get('/dashboard', [AdminController::class, 'dashboard']);
+});
+
+/** Admin Account Routes */
+$bolt->router->group(['prefix' => '/admin/account', []], function($router) {
+    $router->get('/{:id}', [AdminAccountController::class, 'account']);
+    $router->post('/{:id}', [AdminAccountController::class, 'account']);
+    $router->get('/{:id}/delete', [AdminAccountController::class, 'delete_account']);
+    $router->post('/{:id}/delete', [AdminAccountController::class, 'delete']);
 });
 
 /** Admin Users Routes */

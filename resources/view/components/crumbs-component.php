@@ -10,6 +10,8 @@ declare(strict_types=1);
  * ===================================
  */
 
+$user = user();
+
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -19,11 +21,9 @@ declare(strict_types=1);
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
             <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
         </div>
-        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-            <svg class="bi">
-                <use xlink:href="#calendar3" />
-            </svg>
-            This week
-        </button>
+        <a href="<?= URL_ROOT . "/admin/account/{$user['user_id']}" ?>" type="button" class="btn btn-sm btn-primary d-flex align-items-center gap-1">
+            <i class="fa-solid fa-user-secret"></i>
+            <span class="fw-bold text-uppercase"><?= $user['name'] ?></span>
+        </a>
     </div>
 </div>
