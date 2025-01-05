@@ -46,6 +46,7 @@ $user = user();
 
   <div class="nav-scroller py-1 mb-3 border-bottom">
     <nav class="nav nav-underline justify-content-between">
+      <a class="nav-item nav-link link-body-emphasis <?= (active_nav(1, "articles")) ? "active" : "" ?>" href="<?= URL_ROOT . "/articles" ?>">Articles</a>
       <?php foreach ($categories as $key => $cat ): ?>
       <a class="nav-item nav-link link-body-emphasis <?= (active_nav(3, $cat['category_id'])) ? "active" : "" ?>" href="<?= URL_ROOT . "/categories/view/{$cat['category_id']}" ?>"><?= $cat['name'] ?></a>
       <?php endforeach; ?>

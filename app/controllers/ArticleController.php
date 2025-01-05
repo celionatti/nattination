@@ -19,6 +19,7 @@ use celionatti\Bolt\Controller;
 use celionatti\Bolt\Sessions\Handlers\DefaultSessionHandler as Session;
 
 use PhpStrike\app\models\Article;
+use celionatti\Bolt\Pagination\Pagination;
 
 class ArticleController extends Controller
 {
@@ -31,8 +32,18 @@ class ArticleController extends Controller
 
     public function articles()
     {
+        $article = new Article();
+
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        $articles = $article->paginate($page, 2, ['status' => 'publish'], ['created_at' => "DESC"]);
+
+        $pagination = new Pagination($articles['pagination'], URL_ROOT, ['ul' => 'pagination','li' => 'page-item','a' => 'page-link']);
+
         $view = [
-            
+            'articles' => $articles['data'],
+            'pagination' => $pagination->render("ellipses"),
+            'recents' => $article->recent_articles(),
         ];
 
         $this->view->render("pages/articles", $view);

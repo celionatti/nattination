@@ -20,11 +20,11 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
 <?php $this->start('content') ?>
 
-<div class="hero overlay inner-page bg-warning py-5">
+<div class="hero overlay inner-page bg-info py-3">
     <div class="container">
         <div class="row align-items-center justify-content-center text-center pt-5">
             <div class="col-lg-6">
-                <h3><span class="text-secondary-emphasis small">Searching For:</span></h3>
+                <h4><span class="text-secondary-emphasis"><i class="fa-solid fa-search"></i> Searching For:</span></h4>
                 <h1 class="heading text-white mb-3 text-uppercase" data-aos="fade-up"><?= $search ?></h1>
             </div>
         </div>
@@ -55,16 +55,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
                 <div class="d-flex justify-content-center align-items-center text-start pt-5 border-top">
                     <nav class="">
-                        <ul class="pagination">
-                            <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">...</a></li>
-                            <li class="page-item"><a href="#" class="page-link">15</a></li>
-                            <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                        </ul>
+
                     </nav>
                 </div>
 

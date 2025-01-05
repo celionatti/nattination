@@ -20,11 +20,11 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
 <?php $this->start('content') ?>
 
-<div class="hero overlay inner-page bg-warning py-5">
+<div class="hero overlay inner-page bg-primary py-3">
     <div class="container">
         <div class="row align-items-center justify-content-center text-center pt-5">
             <div class="col-lg-6">
-                <h3><span class="text-secondary-emphasis small">Category:</span></h3>
+                <h4><span class="text-secondary-emphasis">Category:</span></h4>
                 <h1 class="heading text-white mb-3" data-aos="fade-up"><?= $name['name'] ?></h1>
             </div>
         </div>
