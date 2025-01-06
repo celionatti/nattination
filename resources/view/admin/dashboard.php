@@ -11,10 +11,14 @@
  * can be edited, base on what they are called in the layout view
  */
 
+use PhpStrike\app\components\CrumbsComponent;
+
 ?>
 
 
 <?php $this->start('content') ?>
+<?= renderComponent(CrumbsComponent::class, []); ?>
+
 <section class="section">
     <div class="card">
         <div class="card-header">

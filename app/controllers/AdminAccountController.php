@@ -18,6 +18,7 @@ use celionatti\Bolt\Http\Response;
 use celionatti\Bolt\Controller;
 
 use PhpStrike\app\models\User;
+use celionatti\Bolt\Authentication\Auth;
 
 use celionatti\Bolt\Illuminate\Support\Upload;
 use celionatti\Bolt\Illuminate\Support\Image;
@@ -30,8 +31,13 @@ class AdminAccountController extends Controller
     {
         $this->view->setLayout("admin");
         $this->setCurrentUser(user());
+
         if(!$this->currentUser) {
             redirect(URL_ROOT . "/login");
+        }
+
+        if($this->currentUser['role'] === "user") {
+            redirect(URL_ROOT);
         }
     }
 
@@ -152,6 +158,52 @@ class AdminAccountController extends Controller
 
     public function delete_account(Request $request, $id)
     {
-        dump("Delete");
+        $user = new User();
+
+        $fetchData = $user->find($id)->toArray();
+
+        if (!$fetchData) {
+            toast("info", "User Not Found!");
+            redirect(URL_ROOT . "/admin/account/{$id}");
+        }
+
+        $view = [
+            'errors' => getFormMessage(),
+            'user' => $fetchData ?? retrieveSessionData('user_data'),
+        ];
+
+        unsetSessionArrayData(['user_data']);
+
+        $this->view->render("admin/account/delete", $view);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        if("POST" !== $request->getMethod()) {
+            return; // Early return for non-POST requests
+        }
+
+        $user = new User();
+
+        $fetchData = $user->find($id)->toArray();
+
+        if (!$fetchData) {
+            toast("info", "User Not Found!");
+            redirect(URL_ROOT . "/admin/account/{$id}");
+        }
+        // Load and prepare data
+        $attributes = $request->loadData();
+
+        if($fetchData && password_verify($attributes['password'], $fetchData['password'])) {
+            if($user->delete($id)) {
+                $auth = new Auth();
+                $auth->logout();
+                toast("success", "Account Deleted!");
+                redirect(URL_ROOT);
+            }
+        } else {
+            toast("info", "Please type in the correct Password!");
+            redirect(URL_ROOT . "/admin/account/{$id}");
+        }
     }
 }

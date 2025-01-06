@@ -24,8 +24,13 @@ class AdminUserController extends Controller
     {
         $this->view->setLayout("admin");
         $this->setCurrentUser(user());
+
         if(!$this->currentUser) {
             redirect(URL_ROOT . "/login");
+        }
+
+        if($this->currentUser['role'] === "user") {
+            redirect(URL_ROOT);
         }
     }
 

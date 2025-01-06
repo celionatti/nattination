@@ -32,7 +32,7 @@ $user = user();
       <div class="col-4 d-flex justify-content-end align-items-center">
         <?php if($user): ?>
         <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="Search">
-          <i class="fa-solid fa-user"></i> Amisu Usman
+          <i class="fa-solid fa-user"></i> <span class="text-capitalize"><?= $user['name'] ?></span>
         </a>
         <a class="text-danger text-decoration-none ms-3" href="<?= URL_ROOT . "/logout" ?>" aria-label="Search">
           <i class="fa-solid fa-power-off"></i>
