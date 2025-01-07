@@ -24,7 +24,7 @@ $user = user();
   <header class="border-bottom lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="link-secondary" href="#">Subscribe</a>
+        <a class="link-secondary" href="<?= URL_ROOT . "/subscribe" ?>">Subscribe</a>
       </div>
       <div class="col-4 text-center">
         <a class="blog-header-logo text-body-emphasis text-decoration-none" href="<?= URL_ROOT ?>"><span class="text-danger">Natti</span>Nation<span class="text-danger">.</span></a>
@@ -32,11 +32,11 @@ $user = user();
       <div class="col-4 d-flex justify-content-end align-items-center">
         <?php if($user): ?>
         <?php if($user['role'] === "admin" || $user['role'] === "editor"): ?>
-        <a class="text-body-emphasis text-decoration-none" target="_blank" href="<?= URL_ROOT . "/admin/dashboard" ?>" aria-label="Admin Dashboard">
+        <a class="text-body-emphasis text-decoration-none" target="_blank" href="<?= URL_ROOT . "/admin/dashboard" ?>" aria-label="Admin Dashboard" title="<?= $user['name'] ?>">
           <i class="fa-solid fa-user-tie border border-2 border-primary-subtle p-1 rounded-circle"></i>
         </a>
         <?php else: ?>
-        <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="Search">
+        <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="User Profile" title="<?= $user['name'] ?>>
           <i class="fa-solid fa-user border border-2 border-danger-subtle p-1 rounded-circle"></i>
         </a>
         <?php endif; ?>

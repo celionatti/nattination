@@ -31,7 +31,7 @@ class Article extends Model
 
     public function recent_articles()
     {
-        return $this->query("SELECT * FROM articles WHERE status = 'publish' ORDER BY created_at DESC LIMIT 5;", [], "assoc")['result'];
+        return $this->query("SELECT * FROM articles WHERE status = 'publish' ORDER BY created_at DESC LIMIT 7;", [], "assoc")['result'];
     }
 
     public function popular_articles($id)

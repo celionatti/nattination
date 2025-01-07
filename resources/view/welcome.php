@@ -114,7 +114,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
           <h4 class="fst-italic">Socials</h4>
           <p class="social">
               <a href="#" class="p-2 text-primary-emphasis"><span class="fa-brands fa-facebook"></span></a>
-              <a href="#" class="p-2 text-dark"><span class="fa-brands fa-square-x-twitter"></span></a>
+              <a href="#" class="p-2"><span class="fa-brands fa-square-x-twitter"></span></a>
               <a href="#" class="p-2 text-primary-emphasis"><span class="fa-brands fa-instagram"></span></a>
               <a href="#" class="p-2 text-danger"><span class="fa-brands fa-youtube"></span></a>
           </p>

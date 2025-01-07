@@ -41,8 +41,8 @@ use celionatti\Bolt\Forms\BootstrapForm;
     }
 
     .avatar-xl {
-        height: 6.125rem;
-        width: 6.125rem;
+        height: 10.125rem;
+        width: 10.125rem;
     }
 </style>
 <?php $this->end() ?>
@@ -60,8 +60,8 @@ use celionatti\Bolt\Forms\BootstrapForm;
             <div class="card-body px-0">
                 <div class="row g-4">
                     <!-- Profile photo -->
-                    <div class="px-5 col-12">
-                        <label class="form-label">Profile picture</label>
+                    <div class="px-5 col-12 d-flex flex-column justify-content-center align-items-center">
+                        <label class="form-label fw-medium">Profile picture</label>
                         <div class="d-flex align-items-center">
                             <label class="position-relative me-2" title="Replace this pic">
                                 <!-- Avatar place holder -->
