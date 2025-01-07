@@ -18,6 +18,8 @@ use celionatti\Bolt\Http\Request;
 use PhpStrike\app\models\User;
 use celionatti\Bolt\Http\Response;
 
+use celionatti\Bolt\Pagination\Pagination;
+
 class AdminUserController extends Controller
 {
     public function onConstruct(): void
@@ -38,8 +40,16 @@ class AdminUserController extends Controller
     {
         $user = new User();
 
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        $users = $user->paginate($page, 5, [], ['created_at' => "DESC"]);
+
+        $pagination = new Pagination($users['pagination'], URL_ROOT, ['ul' => 'pagination','li' => 'page-item','a' => 'page-link']);
+
         $view = [
-            'users' => $user::all()
+            // 'users' => $user::all(),
+            'users' => $users['data'],
+            'pagination' => $pagination->render("ellipses"),
         ];
 
         $this->view->render("admin/users/manage", $view);

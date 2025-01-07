@@ -50,14 +50,6 @@ declare(strict_types=1);
 
             <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-black d-flex align-items-center gap-2" href="<?= URL_ROOT . "/admin/settings" ?>">
-                        <svg class="bi">
-                            <use xlink:href="#gear-wide-connected" />
-                        </svg>
-                        Settings
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-danger d-flex align-items-center gap-2" href="<?= URL_ROOT . "/logout" ?>">
                         <i class="fa-solid fa-power-off"></i>
                         Sign out

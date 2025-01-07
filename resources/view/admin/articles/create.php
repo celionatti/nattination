@@ -43,7 +43,7 @@ use celionatti\Bolt\Forms\BootstrapForm;
 
                     <div class="row">
                         <?php if ($upload_type === "file") : ?>
-                            <?= BootstrapForm::fileField("Thumbnail", "thumbnail", ['class' => 'form-control', 'onchange' => "preview_thumbnail(this.files[0])"], ['class' => 'col-6'], $errors) ?>
+                            <?= BootstrapForm::fileField("Thumbnail", "thumbnail", ['class' => 'form-control', 'onchange' => "preview_thumbnail(this.files[0])", 'accept' => "image/*"], ['class' => 'col-6'], $errors) ?>
                         <?php else : ?>
                             <?= BootstrapForm::inputField("Thumbnail", "thumbnail", old_value("thumbnail", $article["thumbnail"] ?? ''), ['class' => 'form-control'], ['class' => 'col-6'], $errors) ?>
                         <?php endif; ?>

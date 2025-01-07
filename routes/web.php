@@ -48,6 +48,8 @@ $bolt->router->get("/categories/view/{:id}", [CategoryController::class, "catego
 $bolt->router->get("/admin", [AdminController::class, "dashboard"]);
 $bolt->router->group(['prefix' => '/admin', []], function($router) {
     $router->get('/dashboard', [AdminController::class, 'dashboard']);
+    $router->get('/settings', [AdminController::class, 'settings']);
+    $router->post('/settings', [AdminController::class, 'insert_setting']);
 });
 
 /** Admin Account Routes */

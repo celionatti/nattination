@@ -18,6 +18,8 @@ use celionatti\Bolt\Http\Request;
 use PhpStrike\app\models\Category;
 use celionatti\Bolt\Http\Response;
 
+use celionatti\Bolt\Pagination\Pagination;
+
 class AdminCategoryController extends Controller
 {
     public function onConstruct(): void
@@ -38,8 +40,16 @@ class AdminCategoryController extends Controller
     {
         $category = new Category();
 
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        $categories = $category->paginate($page, 6);
+
+        $pagination = new Pagination($categories['pagination'], URL_ROOT, ['ul' => 'pagination','li' => 'page-item','a' => 'page-link']);
+
         $view = [
-            'categories' => $category::all()
+            // 'categories' => $category::all(),
+            'categories' => $categories['data'],
+            'pagination' => $pagination->render("ellipses"),
         ];
 
         $this->view->render("admin/category/manage", $view);

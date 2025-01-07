@@ -30,6 +30,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
     </div>
 
     <div class="table-responsive small">
+        <?php if($articles): ?>
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
@@ -46,7 +47,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
             <tbody>
                 <?php foreach($articles as $key => $article): ?>
                 <tr>
-                    <td><?= $key + 1 ?></td>
+                    <td><?= ($key + 1) ?></td>
                     <td><img src="<?= get_image($article['thumbnail']) ?>" class="d-block" style="height:50px;width:50px;object-fit:cover;border-radius: 10px;cursor: pointer;"></td>
                     <td><a href="<?= URL_ROOT . "/admin/articles/view/{$article['article_id']}" ?>" class="text-black"><?= StringUtils::create($article['title'])->excerpt() ?></a></td>
                     <td class="fw-bold"><?= $article['views'] ?></td>
@@ -70,6 +71,12 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <nav class="d-flex justify-content-center align-items-center">
+            <?= $pagination ?>
+        </nav>
+        <?php else: ?>
+            <h5 class="text-capitalize text-body-danger text-center border-bottom border-secondary border-2 p-2 mt-3">No Data yet!</h5>
+        <?php endif; ?>
     </div>
 </section>
 

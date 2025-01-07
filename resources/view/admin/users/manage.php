@@ -26,6 +26,7 @@ use PhpStrike\app\components\CrumbsComponent;
     </div>
 
     <div class="table-responsive small">
+        <?php if($users): ?>
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
@@ -56,6 +57,12 @@ use PhpStrike\app\components\CrumbsComponent;
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <nav class="d-flex justify-content-center align-items-center">
+            <?= $pagination ?>
+        </nav>
+        <?php else: ?>
+            <h5 class="text-capitalize text-body-danger text-center border-bottom border-secondary border-2 p-2 mt-3">No Data yet!</h5>
+        <?php endif; ?>
     </div>
 </section>
 

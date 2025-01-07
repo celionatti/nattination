@@ -71,7 +71,7 @@ use celionatti\Bolt\Forms\BootstrapForm;
                             </label>
                             <!-- Upload button -->
                             <label class="btn btn-sm btn-dark mb-0" for="profile-btn">Change</label>
-                            <input class="form-control d-none" name="avatar" id="profile-btn" type="file" onchange="preview_avatar(this.files[0])">
+                            <input class="form-control d-none" accept="image/*" name="avatar" id="profile-btn" type="file" onchange="preview_avatar(this.files[0])">
                         </div>
                     </div>
 

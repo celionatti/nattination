@@ -24,6 +24,8 @@ use celionatti\Bolt\Illuminate\Meta\Meta;
 use celionatti\Bolt\Illuminate\Support\Upload;
 use celionatti\Bolt\Illuminate\Support\Image;
 
+use celionatti\Bolt\Pagination\Pagination;
+
 class AdminArticleController extends Controller
 {
     public function onConstruct(): void
@@ -44,8 +46,16 @@ class AdminArticleController extends Controller
     {
         $article = new Article();
 
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        $articles = $article->paginate($page, 5, ['status' => 'publish'], ['created_at' => "DESC"]);
+
+        $pagination = new Pagination($articles['pagination'], URL_ROOT, ['ul' => 'pagination','li' => 'page-item','a' => 'page-link']);
+
         $view = [
-            'articles' => $article->allBy("status", "publish")
+            // 'articles' => $article->allBy("status", "publish"),
+            'articles' => $articles['data'],
+            'pagination' => $pagination->render("ellipses"),
         ];
 
         $this->view->render("admin/articles/manage", $view);
@@ -55,8 +65,16 @@ class AdminArticleController extends Controller
     {
         $article = new Article();
 
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        $articles = $article->paginate($page, 10, ['status' => 'draft'], ['created_at' => "DESC"]);
+
+        $pagination = new Pagination($articles['pagination'], URL_ROOT, ['ul' => 'pagination','li' => 'page-item','a' => 'page-link']);
+
         $view = [
-            'articles' => $article->allBy("status", "draft")
+            // 'articles' => $article->allBy("status", "draft"),
+            'articles' => $articles['data'],
+            'pagination' => $pagination->render("ellipses"),
         ];
 
         $this->view->render("admin/articles/drafts", $view);
