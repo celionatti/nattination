@@ -163,7 +163,7 @@ class AdminArticleController extends Controller
 
             if ($article->create($attributes) && $thumbnail['success']) {
                 // Success: Redirect to manage page
-                // toast("success", "Article Created Successfully");
+                toast("success", "Article Created Successfully");
                 redirect(URL_ROOT . "/admin/articles/manage");
             } else {
                 // Failed to create: Redirect to create page

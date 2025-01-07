@@ -12,6 +12,7 @@ use PhpStrike\app\controllers\AdminArticleController;
 use PhpStrike\app\controllers\AdminCategoryController;
 use PhpStrike\app\controllers\AdminUserController;
 use PhpStrike\app\controllers\AdminAccountController;
+use PhpStrike\app\controllers\AdminSettingController;
 
 /** @var Bolt $bolt */
 
@@ -48,8 +49,6 @@ $bolt->router->get("/categories/view/{:id}", [CategoryController::class, "catego
 $bolt->router->get("/admin", [AdminController::class, "dashboard"]);
 $bolt->router->group(['prefix' => '/admin', []], function($router) {
     $router->get('/dashboard', [AdminController::class, 'dashboard']);
-    $router->get('/settings', [AdminController::class, 'settings']);
-    $router->post('/settings', [AdminController::class, 'insert_setting']);
 });
 
 /** Admin Account Routes */
@@ -91,4 +90,14 @@ $bolt->router->group(['prefix' => '/admin/categories', []], function($router) {
     $router->get('/edit/{:id}', [AdminCategoryController::class, 'edit']);
     $router->post('/edit/{:id}', [AdminCategoryController::class, 'update']);
     $router->get('/delete/{:id}', [AdminCategoryController::class, 'delete']);
+});
+
+/** Admin Settings Routes */
+$bolt->router->group(['prefix' => '/admin/settings', []], function($router) {
+    $router->get('/manage', [AdminSettingController::class, 'settings']);
+    $router->get('/create', [AdminSettingController::class, 'create']);
+    $router->post('/create', [AdminSettingController::class, 'insert']);
+    $router->get('/edit/{:id}', [AdminSettingController::class, 'edit']);
+    $router->post('/edit/{:id}', [AdminSettingController::class, 'update']);
+    $router->get('/delete/{:id}', [AdminSettingController::class, 'delete']);
 });

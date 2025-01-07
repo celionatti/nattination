@@ -145,11 +145,11 @@ class AuthController extends Controller
 
         if($auth['success']) {
             toast("success", $auth['message']);
-            FlashMessage::setMessage($auth['message'], $auth['type']);
+            // FlashMessage::setMessage($auth['message'], $auth['type']);
             redirect(URL_ROOT);
         } else {
             toast("error", $auth['message']);
-            FlashMessage::setMessage($auth['message'], $auth['type']);
+            // FlashMessage::setMessage($auth['message'], $auth['type']);
             redirect(URL_ROOT . "/login");
         }
     }
@@ -158,7 +158,7 @@ class AuthController extends Controller
     {
         $this->auth->logout();
         toast("success", "Logout successfully!");
-        FlashMessage::setMessage("Logout successfully!", "success");
+        // FlashMessage::setMessage("Logout successfully!", "success");
         redirect(URL_ROOT);
 
     }

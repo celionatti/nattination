@@ -95,7 +95,7 @@ class AdminCategoryController extends Controller
 
             if ($category->create($attributes)) {
                 // Success: Redirect to manage page
-                // toast("success", "Category Created Successfully");
+                toast("success", "Category Created Successfully");
                 redirect(URL_ROOT . "/admin/categories/manage");
             } else {
                 // Failed to create: Redirect to create page
@@ -155,7 +155,7 @@ class AdminCategoryController extends Controller
 
             if ($category->update($attributes, $id)) {
                 // Success: Redirect to manage page
-                // toast("success", "Category Updated Successfully");
+                toast("success", "Category Updated Successfully");
                 redirect(URL_ROOT . "/admin/categories/manage");
             } else {
                 // Failed to create: Redirect to create page
@@ -178,7 +178,7 @@ class AdminCategoryController extends Controller
                 redirect(URL_ROOT . "admin/categories/manage");
             }
             if($category->delete($id)) {
-                // toast("success", "Category Deleted Successfully");
+                toast("success", "Category Deleted Successfully");
                 redirect(URL_ROOT . "/admin/categories/manage");
             } else {
                 // Failed to create: Redirect to create page

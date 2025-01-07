@@ -31,14 +31,20 @@ $user = user();
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <?php if($user): ?>
-        <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="Search">
-          <i class="fa-solid fa-user"></i> <span class="text-capitalize"><?= $user['name'] ?></span>
+        <?php if($user['role'] === "admin" || $user['role'] === "editor"): ?>
+        <a class="text-body-emphasis text-decoration-none" target="_blank" href="<?= URL_ROOT . "/admin/dashboard" ?>" aria-label="Admin Dashboard">
+          <i class="fa-solid fa-user-tie border border-2 border-primary-subtle p-1 rounded-circle"></i>
         </a>
+        <?php else: ?>
+        <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="Search">
+          <i class="fa-solid fa-user border border-2 border-danger-subtle p-1 rounded-circle"></i>
+        </a>
+        <?php endif; ?>
         <a class="text-danger text-decoration-none ms-3" href="<?= URL_ROOT . "/logout" ?>" aria-label="Search">
           <i class="fa-solid fa-power-off"></i>
         </a>
         <?php else: ?>
-        <a class="btn btn-sm btn-outline-secondary" href="<?= URL_ROOT . "/auth/register" ?>">Sign up</a>
+        <a class="btn btn-sm btn-outline-secondary" href="<?= URL_ROOT . "/login" ?>">Login</a>
         <?php endif; ?>
       </div>
     </div>

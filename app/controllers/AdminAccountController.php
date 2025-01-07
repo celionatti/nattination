@@ -195,6 +195,15 @@ class AdminAccountController extends Controller
         $attributes = $request->loadData();
 
         if($fetchData && password_verify($attributes['password'], $fetchData['password'])) {
+            // Attempt to delete the avatar if it exists
+            $upload = new Upload("uploads/users");
+            if(!is_null($fetchData['avatar'])) {
+                if (!$upload->delete($fetchData['avatar'])) {
+                    toast("error", "Avatar delete failed!");
+                    setFormMessage(['error' => 'Avatar delete failed!']);
+                }
+            }
+
             if($user->delete($id)) {
                 $auth = new Auth();
                 $auth->logout();

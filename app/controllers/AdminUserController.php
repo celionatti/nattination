@@ -109,7 +109,7 @@ class AdminUserController extends Controller
 
             if ($user->create($attributes)) {
                 // Success: Redirect to manage page
-                // toast("success", "User Created Successfully");
+                toast("success", "User Created Successfully");
                 redirect(URL_ROOT . "/admin/users/manage");
             } else {
                 // Failed to create: Redirect to create page
@@ -179,7 +179,7 @@ class AdminUserController extends Controller
 
             if ($user->update($attributes, $id)) {
                 // Success: Redirect to manage page
-                // toast("success", "User Updated Successfully");
+                toast("success", "User Updated Successfully");
                 redirect(URL_ROOT . "/admin/users/manage");
             } else {
                 // Failed to create: Redirect to create page
@@ -201,8 +201,18 @@ class AdminUserController extends Controller
                 toast("info", "User Not Found!");
                 redirect(URL_ROOT . "admin/users/manage");
             }
+
+            // Attempt to delete the avatar if it exists
+            $upload = new Upload("uploads/users");
+            if(!is_null($fetchData->avatar)) {
+                if (!$upload->delete($fetchData->avatar)) {
+                    toast("error", "Avatar delete failed!");
+                    setFormMessage(['error' => 'Avatar delete failed!']);
+                }
+            }
+
             if($user->delete($id)) {
-                // toast("success", "User Deleted Successfully");
+                toast("success", "User Deleted Successfully");
                 redirect(URL_ROOT . "/admin/users/manage");
             } else {
                 // Failed to create: Redirect to create page

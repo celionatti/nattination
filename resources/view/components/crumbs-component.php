@@ -22,7 +22,7 @@ $user = user();
                 <i class="fa-solid fa-globe mt-1"></i>
             </a>
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <a href="<?= URL_ROOT . "/admin/settings" ?>" type="button" class="btn btn-sm btn-outline-danger">
+            <a href="<?= URL_ROOT . "/admin/settings/manage" ?>" type="button" class="btn btn-sm btn-outline-danger">
                 <svg class="bi mt-1">
                     <use xlink:href="#gear-wide-connected" />
                 </svg>
