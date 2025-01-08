@@ -14,6 +14,8 @@ declare(strict_types=1);
  use celionatti\Bolt\illuminate\Schema\Schema;
  use celionatti\Bolt\illuminate\Schema\Blueprint;
 
+ use PhpStrike\app\models\User;
+
 return new class extends Migration
 {
     /**
@@ -41,6 +43,17 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        $user = new User();
+
+        $data = [
+            'user_id' => '12345yjmlb',
+            'name' => 'admin',
+            'email' => 'admin@mail.com',
+            'role' => 'admin',
+            'password' => password_hash('admin', PASSWORD_DEFAULT),
+        ];
+
+        $user->create($data);
     }
 
     /**

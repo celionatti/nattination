@@ -18,6 +18,7 @@ use celionatti\Bolt\Http\Request;
 use PhpStrike\app\models\User;
 use celionatti\Bolt\Http\Response;
 
+use celionatti\Bolt\Illuminate\Support\Upload;
 use celionatti\Bolt\Pagination\Pagination;
 
 class AdminUserController extends Controller
@@ -159,16 +160,32 @@ class AdminUserController extends Controller
                 redirect(URL_ROOT . "/admin/users/manage");
             }
 
+            // Current user
+            $currentUser = $this->currentUser;
+
+            // Only admin users can delete other users
+            if ($currentUser['role'] !== 'admin') {
+                toast("error", "Unauthorized action! Only admins can update users.");
+                redirect(URL_ROOT . "/admin/users/manage");
+            }
+
             $rules = [
                 'name' => 'required|string|min:3|max:50',
                 'email' => "required|email|unique:users.email,user_id != $id",
                 'phone' => 'required|numeric',
                 'gender' => 'required',
-                'role' => 'required',
+                // 'role' => 'required',
             ];
 
-            // Load and validate data
-            $attributes = $request->loadData();
+            // Prevent admin from updating their own role
+            if ($currentUser['user_id'] === $fetchData->user_id) {
+                // Exclude 'role' for the current admin
+                $attributes = $request->loadDataExcept(['role']);
+            } else {
+                // Include 'role' for other users
+                $rules['role'] = 'required';
+                $attributes = $request->loadData();
+            }
 
             if (!$request->validate($rules, $attributes)) {
                 storeSessionData('user_data', $attributes);
@@ -200,6 +217,21 @@ class AdminUserController extends Controller
             if (!$fetchData) {
                 toast("info", "User Not Found!");
                 redirect(URL_ROOT . "admin/users/manage");
+            }
+
+            // Current user
+            $currentUser = $this->currentUser;
+
+            // Only admin users can delete other users
+            if ($currentUser['role'] !== 'admin') {
+                toast("error", "Unauthorized action! Only admins can delete users.");
+                redirect(URL_ROOT . "/admin/users/manage");
+            }
+
+            // Prevent users from deleting their own account
+            if ($currentUser['user_id'] === $fetchData->user_id) {
+                toast("error", "You cannot delete your own account!");
+                redirect(URL_ROOT . "/admin/users/manage");
             }
 
             // Attempt to delete the avatar if it exists
