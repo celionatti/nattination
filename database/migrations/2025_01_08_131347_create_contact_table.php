@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * ======================================
  * ===============       ================
- * Subscriber Migration 
+ * Contact Migration 
  * ===============       ================
  * ======================================
  */
@@ -23,12 +23,13 @@ return new class extends Migration
      */
     public function up():void
     {
-        Schema::create("subscribers", function (Blueprint $table) {
+        Schema::create("contacts", function (Blueprint $table) {
             $table->id();
-            $table->string('subscriber_id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('email')->unique('email');
-            $table->enum('status', ['active', 'disable'])->default("disable");
+            $table->string('contact_id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('subject');
+            $table->text('message');
             $table->timestamps();
         });
     }
@@ -40,6 +41,6 @@ return new class extends Migration
      */
     public function down():void
     {
-        Schema::dropIfExists("subscribers");
+        Schema::dropIfExists("contacts");
     }
 };

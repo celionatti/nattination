@@ -36,7 +36,7 @@ $user = user();
           <i class="fa-solid fa-user-tie border border-2 border-primary-subtle p-1 rounded-circle"></i>
         </a>
         <?php else: ?>
-        <a class="text-body-emphasis text-decoration-none" href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" aria-label="User Profile" title="<?= $user['name'] ?>>
+        <a href="<?= URL_ROOT . "/profile/account/{$user['user_id']}" ?>" class="text-body-emphasis text-decoration-none" title="<?= $user['name'] ?>">
           <i class="fa-solid fa-user border border-2 border-danger-subtle p-1 rounded-circle"></i>
         </a>
         <?php endif; ?>

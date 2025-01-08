@@ -17,7 +17,7 @@ declare(strict_types=1);
     <div class="address mt-2">
         <i class="icon-room"></i>
         <h4 class="mb-2">Location:</h4>
-        <p>324 Abeokuta express-way,<br> Abule Egba, Lagos, Nigeria.</p>
+        <p>378 Lagos Abeokuta express-way,<br> Abule Egba, Nigeria.</p>
     </div>
 
     <div class="open-hours mt-4">

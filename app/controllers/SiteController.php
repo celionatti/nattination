@@ -17,8 +17,8 @@ use celionatti\Bolt\Http\Request;
 use celionatti\Bolt\Controller;
 
 use PhpStrike\app\models\Article;
-use PhpStrike\app\models\Category;
-use PhpStrike\app\models\Subscriber;
+use PhpStrike\app\models\User;
+use PhpStrike\app\models\Contact;
 
 use celionatti\Bolt\Authentication\Auth;
 use celionatti\Bolt\Pagination\Pagination;
@@ -27,7 +27,7 @@ class SiteController extends Controller
 {
     public function onConstruct(): void
     {
-        // $this->setCurrentUser(user());
+        $this->setCurrentUser(user());
     }
 
     public function welcome()
@@ -50,6 +50,21 @@ class SiteController extends Controller
         ];
 
         $this->view->render("welcome", $view);
+    }
+
+    public function search(Request $request)
+    {
+        $article = new Article();
+
+        $search = $request->get("query");
+
+        $view = [
+            'articles' => $article->search($search),
+            'search' => $search,
+            'recents' => $article->recent_articles(),
+        ];
+
+        $this->view->render("pages/search", $view);
     }
 
     public function about()
@@ -75,70 +90,65 @@ class SiteController extends Controller
 
     public function insert_contact(Request $request)
     {
+        if("POST" !== $request->getMethod()) {
+            return;
+        }
+        $contact = new Contact();
 
-    }
-
-    public function search(Request $request)
-    {
-        $article = new Article();
-
-        $search = $request->get("query");
-
-        $view = [
-            'articles' => $article->search($search),
-            'search' => $search,
-            'recents' => $article->recent_articles(),
+        $rules = [
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
         ];
 
-        $this->view->render("pages/search", $view);
+        // Load and validate data
+        $attributes = $request->loadData();
+
+        if (!$request->validate($rules, $attributes)) {
+            storeSessionData('contact_data', $attributes);
+            setFormMessage($request->getErrors());
+            redirect(URL_ROOT . "/contact-us");
+            return; // Ensure the method exits after redirect
+        }
+
+        $attributes['contact_id'] = bv_uuid();
+
+        if ($contact->create($attributes)) {
+            // Success: Redirect to manage page
+            toast("success", "Message Sent Successfully");
+            redirect(URL_ROOT);
+        } else {
+            // Failed to create: Redirect to create page
+            toast("error", "Message process Failed!");
+            redirect(URL_ROOT);
+        }
     }
 
-    public function subscribe()
+    public function subscribe(Request $request)
     {
         $view = [
             'errors' => getFormMessage(),
-            'subscriber' => retrieveSessionData('subscribe_data'),
         ];
-
-        unsetSessionArrayData(['subscribe_data']);
 
         $this->view->render("subscribe", $view);
     }
 
-    public function insert_subscriber(Request $request)
+    public function subscribe_newsletter(Request $request, $id)
     {
-        if ($request->getMethod() === "POST") {
-            // Proceed to create category if validation passes
-            $subscribe = new Subscriber();
+        if(!$this->currentUser) {
+            toast("info", "You need to Register, to subscribe.");
+            redirect(URL_ROOT);
+        }
+        $user = new User();
 
-            $rules = [
-                'name' => 'required|string',
-                'email' => 'required|email|unique:subscribers.email',
-                'status' => 'required',
-            ];
-
-            // Load and validate data
-            $attributes = $request->loadData();
-            $attributes['status'] = "disable";
-
-            if (!$request->validate($rules, $attributes)) {
-                storeSessionData('subscribe_data', $attributes);
-                setFormMessage($request->getErrors());
-                redirect(URL_ROOT . "/subscribe");
-                return; // Ensure the method exits after redirect
-            }
-
-            $attributes['subscriber_id'] = bv_uuid();
-
-            if ($subscribe->create($attributes)) {
-                // Success: Redirect to manage page
-                toast("success", "{$attributes['email']} Added Lists!");
-                redirect(URL_ROOT);
-            } else {
-                // Failed to create: Redirect to create page
-                setFormMessage(['error' => 'Subscription Creatin failed!']);
-                redirect(URL_ROOT);
-            }
+        if($user->update(['subscriber' => 1], $id)) {
+            toast("success", "Now Added to Newsletter.");
+            redirect(URL_ROOT);
+        } else {
+            // Failed to create: Redirect to create page
+            toast("error", "Newsletter Process failed!");
+            redirect(URL_ROOT);
         }
     }
 

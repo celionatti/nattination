@@ -16,6 +16,8 @@ use celionatti\Bolt\Helpers\FlashMessages\BootstrapFlashMessage;
 
     <link rel="stylesheet" href="<?= asset("dist/css/all.min.css") ?>">
 
+    <link rel="stylesheet" href="<?= asset("packages/toastr/toastr.min.css") ?>">
+
     <style type="text/css">
         body {
             position: relative;
@@ -37,7 +39,37 @@ use celionatti\Bolt\Helpers\FlashMessages\BootstrapFlashMessage;
     <!-- Your Content goes in here. -->
     <?php $this->content('content'); ?>
 
+    <script src="<?= asset('dist/js/jquery-3.7.0.min.js'); ?>"></script>
+    <script src="<?= asset('packages/toastr/toastr.min.js'); ?>"></script>
     <script src="<?= asset("dist/bootstrap/js/bootstrap.bundle.min.js") ?>"></script>
+
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        <?php if (isset($_SESSION['__bv_flash_toastr'])) : ?>
+            <?php
+            $toastr = $_SESSION['__bv_flash_toastr'];
+            unset($_SESSION['__bv_flash_toastr']); // Remove the toastr from the session
+            ?>
+            toastr.<?= $toastr['type'] ?>("<?= $toastr['message'] ?>");
+        <?php endif; ?>
+    </script>
     <?php $this->content('script') ?>
 </body>
 

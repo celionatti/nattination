@@ -30,12 +30,13 @@ $bolt->router->group(['prefix' => '/', []], function($router) {
     $router->get('/', [SiteController::class, 'welcome']);
     $router->get('/about', [SiteController::class, 'about']);
     $router->get('/contact-us', [SiteController::class, 'contact']);
+    $router->post('/contact-us', [SiteController::class, 'insert_contact']);
     $router->get('/privacy-policy', [SiteController::class, 'policy']);
     $router->get('/terms-and-conditions', [SiteController::class, 'terms']);
     $router->get('/search', [SiteController::class, 'search']);
 
     $router->get('/subscribe', [SiteController::class, 'subscribe']);
-    $router->post('/subscribe', [SiteController::class, 'insert_subscriber']);
+    $router->get('/subscribe/{:id}', [SiteController::class, 'subscribe_newsletter']);
 
     $router->get('/auth/register', [AuthController::class, 'register_view']);
     $router->post('/auth/register', [AuthController::class, 'register']);
