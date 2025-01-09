@@ -26,7 +26,7 @@ class Article extends Model
 
     public function article_author($id)
     {
-        return $this->query("SELECT name FROM users WHERE user_id = (SELECT user_id FROM articles WHERE article_id = :id);", ['id' => $id], "assoc")['result'][0];
+        return $this->query("SELECT name, social_links FROM users WHERE user_id = (SELECT user_id FROM articles WHERE article_id = :id);", ['id' => $id], "assoc")['result'][0];
     }
 
     public function recent_articles()

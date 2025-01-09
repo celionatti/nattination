@@ -51,8 +51,9 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
 <div class="row g-5">
     <div class="col-md-8">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the Firehose
+      <h3 class="pb-4 mb-4 fst-italic border-bottom border-info">
+        <span class="h5"><i class='fa-solid fa-blog text-info'></i></span>
+        <?= setting("qoute", "Just do you, That's all you've gat.") ?>
       </h3>
 
       <?php if($articles): ?>
@@ -90,7 +91,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-2 mb-3 bg-body-tertiary rounded">
           <h4 class="fst-italic">About</h4>
-          <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+          <p class="mb-0"><?= setting("about", "Loading...") ?></p>
         </div>
 
         <div>
@@ -113,10 +114,10 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
         <div class="p-4">
           <h4 class="fst-italic">Socials</h4>
           <p class="social">
-              <a href="#" class="p-2 text-primary-emphasis"><span class="fa-brands fa-facebook"></span></a>
-              <a href="#" class="p-2"><span class="fa-brands fa-square-x-twitter"></span></a>
-              <a href="#" class="p-2 text-primary-emphasis"><span class="fa-brands fa-instagram"></span></a>
-              <a href="#" class="p-2 text-danger"><span class="fa-brands fa-youtube"></span></a>
+              <a href="<?= setting("facebook_link", "#") ?>" class="p-2 text-primary-emphasis"><span class="fa-brands fa-facebook"></span></a>
+              <a href="<?= setting("x_link", "#") ?>" class="p-2"><span class="fa-brands fa-square-x-twitter"></span></a>
+              <a href="<?= setting("instagram_link", "#") ?>" class="p-2 text-primary-emphasis"><span class="fa-brands fa-instagram"></span></a>
+              <a href="<?= setting("youtube_link", "#") ?>" class="p-2 text-danger"><span class="fa-brands fa-youtube"></span></a>
           </p>
         </div>
       </div>

@@ -64,11 +64,23 @@ class ArticleController extends Controller
             $this->session->set("article_view", $id);
         }
 
+        $author = $article->article_author($id);
+
+         // $socialLinks = isset($author['social_links']) ? explode(',', $author['social_links']) : [];
+
+        //  $defaultLinks = [
+        //     'twitter' => $socialLinks[0] ?? '#',
+        //     'facebook' => $socialLinks[1] ?? '#',
+        //     'instagram'  => $socialLinks[2] ?? '#',
+        //     'youtube' => $socialLinks[3] ?? '#',
+        // ];
+
         $view = [
             'article' => $article->findBy(['article_id' => $id])->toArray(),
             'populars' => $article->popular_articles($id),
             'mores' => $article->more_articles($id),
-            'author' => $article->article_author($id),
+            'author' => $author['name'],
+            'author_links' => isset($author['social_links']) ? explode(',', $author['social_links']) : [],
         ];
 
         $this->view->render("pages/article", $view);

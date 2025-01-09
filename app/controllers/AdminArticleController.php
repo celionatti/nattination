@@ -133,7 +133,8 @@ class AdminArticleController extends Controller
             ];
 
             // Load and validate data
-            $attributes = $request->loadData();
+            $attributes = $request->loadDataExcept(['content']);
+            $attributes['content'] = $_POST['content'];
             $attributes['article_id'] = bv_uuid();
             $attributes['user_id'] = $this->currentUser['user_id'] ?? null;
             $attributes['meta_title'] = strtolower(Meta::MetaTitle($attributes['title'], $attributes['content']));
@@ -235,7 +236,8 @@ class AdminArticleController extends Controller
         ];
 
         // Load and prepare data
-        $attributes = $request->loadData();
+        $attributes = $request->loadDataExcept(['content']);
+        $attributes['content'] = $_POST['content'];
         $attributes['meta_title'] = Meta::MetaTitle($attributes['title'], $attributes['content']);
         $attributes['meta_description'] = Meta::MetaDescription($attributes['content']);
         $attributes['meta_keywords'] = Meta::MetaKeywords($attributes['title'], $attributes['content']);

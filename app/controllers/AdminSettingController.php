@@ -85,7 +85,8 @@ class AdminSettingController extends Controller
         ];
 
         // Load and validate data
-        $attributes = $request->loadData();
+        $attributes = $request->loadDataExcept(['value']);
+        $attributes['value'] = $_POST['value'];
 
         if (!$request->validate($rules, $attributes)) {
             storeSessionData('setting_data', $attributes);
@@ -145,7 +146,8 @@ class AdminSettingController extends Controller
             ];
 
             // Load and validate data
-            $attributes = $request->loadData();
+            $attributes = $request->loadDataExcept(['value']);
+            $attributes['value'] = $_POST['value'];
 
             if (!$request->validate($rules, $attributes)) {
                 storeSessionData('setting_data', $attributes);

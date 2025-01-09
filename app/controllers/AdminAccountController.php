@@ -64,7 +64,8 @@ class AdminAccountController extends Controller
             ];
 
             // Load and validate data
-            $attributes = $request->loadData();
+            $attributes = $request->loadDataExcept(['bio']);
+            $attributes['bio'] = $_POST['bio'];
 
             // Get the submitted social links array
             $socialLinks = $_POST['social_links'];

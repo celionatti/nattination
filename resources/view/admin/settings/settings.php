@@ -40,6 +40,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Value</th>
+                        <th scope="col">Status</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -48,7 +49,8 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                 <tr>
                     <td><?= ($key + 1) ?></td>
                     <td class="text-capitalize"><?= $setting['name'] ?></td>
-                    <td><?= StringUtils::create(htmlspecialchars_decode(nl2br($setting['value']))) ?></td>
+                    <td><?= StringUtils::create(htmlspecialchars_decode(nl2br($setting['value'])))->excerpt(50) ?></td>
+                    <td class="text-capitalize"><?= $setting['status'] ?></td>
                     <td class="text-end">
                         <a href="<?= URL_ROOT . "/admin/settings/edit/{$setting['id']}" ?>" class="btn btn-info btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
 
