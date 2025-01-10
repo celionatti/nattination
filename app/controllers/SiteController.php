@@ -36,7 +36,7 @@ class SiteController extends Controller
 
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-        $articles = $article->paginate($page, 10, ['status' => 'publish'], ['created_at' => "DESC"]);
+        $articles = $article->paginate($page, 10, ['status' => 'publish', 'is_featured' => 0, 'is_editor' => 0], ['created_at' => "DESC"]);
 
         $pagination = new Pagination($articles['pagination'], URL_ROOT, ['ul' => 'pagination','li' => 'page-item','a' => 'page-link']);
 

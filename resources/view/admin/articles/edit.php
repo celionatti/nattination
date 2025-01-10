@@ -27,7 +27,7 @@ use celionatti\Bolt\Forms\BootstrapForm;
 
     <div class="row g-5 mb-3 py-2">
         <div class="col-md-5 col-lg-4 order-md-last">
-            <img src="<?= get_image($article['thumbnail']); ?>" alt="" class="mx-auto d-block preview" style="height:250px;width:300px;object-fit:cover;border-radius: 10px;cursor: pointer;">
+            <img src="<?= get_image($article['thumbnail'], "default"); ?>" alt="" class="mx-auto d-block preview" style="height:250px;width:300px;object-fit:cover;border-radius: 10px;cursor: pointer;">
         </div>
         <div class="col-md-7 col-lg-8">
             <form action="" method="post" enctype="multipart/form-data">

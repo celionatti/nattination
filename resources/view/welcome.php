@@ -40,7 +40,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
               </a>
             </div>
             <div class="col-auto d-none d-lg-block">
-              <img src="<?= get_image($editor['thumbnail']) ?>" class="" height="300" loading="lazy">
+              <img src="<?= get_image($editor['thumbnail']) ?>" class="" height="300">
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
       <?php if($articles): ?>
       <?php foreach($articles as $article): ?>
       <article class="blog-post border-bottom border-2 border-info shadow p-2">
-        <h2 class="display-5 link-body-emphasis mb-1"><a href="<?= URL_ROOT . "/articles/{$article['article_id']}" ?>" class="link-body-emphasis text-decoration-none"><?= $article['title'] ?></a></h2>
+        <h2 class="display-6 link-body-emphasis mb-1"><a href="<?= URL_ROOT . "/articles/{$article['article_id']}" ?>" class="link-body-emphasis text-decoration-none"><?= $article['title'] ?></a></h2>
 
         <div class="d-flex justify-content-between align-items-center px-2">
           <small class="my-1 px-1 text-danger-emphasis fw-medium"><?= TimeDateUtils::create($article['created_at'])->toCustomFormat("l, F jS, Y") ?> <span class="ps-2 fa-solid fa-user border-start border-danger border-3 ms-1"></span> <a class="fw-medium text-primary-emphasis text-decoration-none text-capitalize"><?= $article['contributors'] ?></a></small>

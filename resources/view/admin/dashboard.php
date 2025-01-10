@@ -24,13 +24,10 @@ use PhpStrike\app\components\CrumbsComponent;
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="true" href="#">Active</a>
+                    <a class="nav-link active" aria-current="true" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link disabled">Analytics</a>
                 </li>
             </ul>
         </div>
