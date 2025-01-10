@@ -16,6 +16,7 @@ use celionatti\Bolt\Forms\BootstrapForm;
 
 ?>
 
+
 <?php $this->start('content') ?>
 
 <div class="hero overlay inner-page bg-primary py-5">

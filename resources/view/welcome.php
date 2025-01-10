@@ -53,7 +53,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
     <div class="col-md-8">
       <h3 class="pb-4 mb-4 fst-italic border-bottom border-info">
         <span class="h5"><i class='fa-solid fa-blog text-info'></i></span>
-        <?= setting("qoute", "Just do you, That's all you've gat.") ?>
+        <?= setting("quote", "Just do you, That's all you've gat.") ?>
       </h3>
 
       <?php if($articles): ?>
@@ -89,8 +89,8 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
-        <div class="p-2 mb-3 bg-body-tertiary rounded">
-          <h4 class="fst-italic">About</h4>
+        <div class="p-2 mb-3 bg-body-tertiary rounded shadow">
+          <h4 class="fst-italic border-bottom border-info border-2 pb-1">About</h4>
           <p class="mb-0"><?= setting("about", "Loading...") ?></p>
         </div>
 

@@ -44,8 +44,10 @@ $user = user();
                     <li><strong>Weekly Highlights:</strong> Get a curated list of top stories every week.</li>
                     <li><strong>Monthly Recap:</strong> Catch up on all the important updates at the end of the month.</li>
                 </ul>
+                <?php if(!$user): ?>
                 <p><strong>Note:</strong> You need to be a registered member to subscribe to our newsletter. If you’re not registered yet, <a href="<?= URL_ROOT . "/auth/register" ?>">sign up here.</a></p>
                 <p>Already registered? <a href="<?= URL_ROOT . "/login" ?>">Log in and subscribe now!</a></p>
+                <?php endif; ?>
                 <p>Join our community and stay informed on what matters most to you.</p>
 
                 <?php if($user): ?>

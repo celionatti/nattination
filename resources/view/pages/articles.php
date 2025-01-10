@@ -41,7 +41,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                         <img src="<?= get_image($article['thumbnail']) ?>" alt="Image" class="" height="300" width="250">
                     </a>
                     <div>
-                        <span class="date"><?= TimeDateUtils::create($article['created_at'])->toCustomFormat("F jS, Y") ?> &bullet; <a class="text-danger"><?= $article['tags'] ?></a></span>
+                        <span class="date"><?= TimeDateUtils::create($article['created_at'])->toCustomFormat("F jS, Y") ?> &bullet; <a class="text-danger"><?= $article['tags'] ?></a> &bullet; <small class="fa-solid fa-book-open"></small> <?= calReadTime($article['content'], "mins read") ?></span>
                         <h2><a href="<?= URL_ROOT . "/articles/{$article['article_id']}" ?>" class="text-black"><?= $article['title'] ?></a></h2>
                         <p><?= StringUtils::create(htmlspecialchars_decode(nl2br($article['content'])))->excerpt(230) ?></p>
                         <p><a href="<?= URL_ROOT . "/articles/{$article['article_id']}" ?>" class="btn btn-sm btn-outline-dark">Read More</a></p>

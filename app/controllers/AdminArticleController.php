@@ -141,6 +141,7 @@ class AdminArticleController extends Controller
             $attributes['meta_description'] = strtolower(Meta::MetaDescription($attributes['content']));
             $attributes['meta_keywords'] = strtolower(Meta::MetaKeywords($attributes['title'], $attributes['content']));
 
+
             if($request->get("ut") === "file") {
                 $upload = new Upload("uploads/articles");
                 $thumbnail = $upload->uploadFile("thumbnail");
@@ -154,7 +155,9 @@ class AdminArticleController extends Controller
 
             if (!$request->validate($rules, $attributes)) {
                 // delete uploaded thumbnail
-                $upload->delete($attributes['thumbnail']);
+                if ($request->get("ut") === "file") {
+                    $upload->delete($attributes['thumbnail']);
+                }
 
                 storeSessionData('article_data', $attributes);
                 setFormMessage($request->getErrors());
@@ -243,44 +246,18 @@ class AdminArticleController extends Controller
         $attributes['meta_keywords'] = Meta::MetaKeywords($attributes['title'], $attributes['content']);
 
         // Handle file upload if ut=file
-        if ($request->get("ut") === "file" && isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] !== UPLOAD_ERR_NO_FILE) {
-            $upload = new Upload("uploads/articles");
-
-            // Perform file upload and check success
-            $thumbnail = $upload->uploadFile("thumbnail");
-
-            if ($thumbnail['success']) {
-                // Delete old thumbnail if it exists
-                if (!is_null($fetchData->thumbnail)) {
-                    $upload->delete($fetchData->thumbnail, true);
-                }
-
-                // Add new thumbnail to attributes
-                $attributes['thumbnail'] = $thumbnail['file'];
-
-                // Resize uploaded image
-                $image = new Image();
-                $image->resize($attributes['thumbnail']);
-            } else {
-                // Handle thumbnail upload failure
-                setFormMessage(['error' => 'Thumbnail upload failed!']);
-                storeSessionData('article_data', $attributes);
-                redirect(URL_ROOT . "/admin/articles/create?ut={$request->get('ut')}");
-                return; // Ensure exit after redirect
-            }
-        } else {
-            // If no new thumbnail uploaded, retain existing thumbnail
-            $attributes['thumbnail'] = $fetchData->thumbnail;
-        }
+        $attributes['thumbnail'] = $this->handleThumbnail($request, $fetchData, $attributes);
 
         // Validate request data
         if (!$request->validate($rules, $attributes)) {
             // delete uploaded thumbnail
-            $upload->delete($attributes['thumbnail']);
+            if ($request->get("ut") === "file") {
+                $upload->delete($attributes['thumbnail']);
+            }
 
             storeSessionData('article_data', $attributes);
             setFormMessage($request->getErrors());
-            redirect(URL_ROOT . "/admin/articles/create?ut={$request->get('ut')}");
+            redirect(URL_ROOT . "/admin/articles/edit?ut={$request->get('ut')}");
             return; // Ensure exit after redirect
         }
 
@@ -313,8 +290,10 @@ class AdminArticleController extends Controller
 
         // Attempt to delete the thumbnail if it exists
         $upload = new Upload("uploads/articles");
-        if (!$upload->delete($fetchData->thumbnail)) {
-            setFormMessage(['error' => 'Thumbnail delete failed!']);
+        if(file_exists($fetchData->thumbnail)) {
+            if (!$upload->delete($fetchData->thumbnail)) {
+                setFormMessage(['error' => 'Thumbnail delete failed!']);
+            }
         }
 
         // Delete the article
@@ -388,6 +367,40 @@ class AdminArticleController extends Controller
         }
         // Redirect back to the articles management page in either case
         return redirect($redirectUrl);
+    }
+
+    private function handleThumbnail(Request $request, $fetchData, $attributes)
+    {
+        $upload = new Upload("uploads/articles");
+
+        if ($request->get("ut") === "file") {
+            if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] !== UPLOAD_ERR_NO_FILE) {
+                $thumbnail = $upload->uploadFile("thumbnail");
+                if ($thumbnail['success']) {
+                    if (!is_null($fetchData->thumbnail)) {
+                        $upload->delete($fetchData->thumbnail, true);
+                    }
+                    $image = new Image();
+                    $image->resize($thumbnail['file']);
+                    return $thumbnail['file'];
+                }
+                throw new Exception('Thumbnail upload failed!');
+            }
+            return $fetchData->thumbnail;
+        }
+
+        if ($request->get("ut") === "link") {
+            if (file_exists($fetchData->thumbnail)) {
+                $upload->delete($fetchData->thumbnail);
+            }
+            $thumbnailValue = $_POST['thumbnail'];
+            if (filter_var($thumbnailValue, FILTER_VALIDATE_URL)) {
+                return $thumbnailValue;
+            }
+            throw new Exception('Invalid thumbnail link!');
+        }
+
+        return $fetchData->thumbnail;
     }
 
 }

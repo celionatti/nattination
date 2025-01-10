@@ -32,7 +32,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 <div class="section mt-3">
     <div class="container lh-lg">
         <p>
-            At Natti Nation, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you visit our website. By using our services, you agree to the practices described below.
+            At <strong><span class="text-danger"> Natti</span>Nation<span class="text-danger">.</span></strong>, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you visit our website. By using our services, you agree to the practices described below.
         </p>
         <h5>1. Information We Collect</h5>
         <p>We may collect the following information from you:</p>

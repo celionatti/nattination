@@ -32,7 +32,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 <div class="section mt-3">
     <div class="container lh-lg">
         <p>
-            Welcome to Natti Nation. By accessing or using our website, you agree to be bound by these Terms and Conditions. Please read them carefully before proceeding.
+            Welcome to <strong><span class="text-danger"> Natti</span>Nation<span class="text-danger">.</span></strong> By accessing or using our website, you agree to be bound by these Terms and Conditions. Please read them carefully before proceeding.
         </p>
         <h5>1. Website Purpose and Usage</h5>
         <p>The primary purpose of this website is for content sharing, blogging, and educational purposes. By using this platform, you agree to adhere to the following guidelines:</p>

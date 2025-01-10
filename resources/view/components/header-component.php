@@ -24,7 +24,7 @@ $user = user();
   <header class="border-bottom lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="link-secondary" href="<?= URL_ROOT . "/subscribe" ?>">Subscribe</a>
+        <a class="text-body-emphasis" href="<?= URL_ROOT . "/subscribe" ?>">Subscribe</a>
       </div>
       <div class="col-4 text-center">
         <a class="blog-header-logo text-body-emphasis text-decoration-none" href="<?= URL_ROOT ?>"><span class="text-danger">Natti</span>Nation<span class="text-danger">.</span></a>
