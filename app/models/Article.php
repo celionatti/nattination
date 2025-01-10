@@ -59,13 +59,6 @@ class Article extends Model
         return $this->query("UPDATE articles SET is_editor = 0 WHERE article_id = (SELECT article_id FROM articles WHERE is_editor = 1 ORDER BY updated_at ASC LIMIT 1);", [], "assoc")['result'][0];
     }
 
-    public function update_editor($id)
-    {
-        return $this->query("UPDATE articles SET is_editor = 1 WHERE article_id = :id AND is_featured != 1;", ['id' => $id], "assoc")['result'];
-
-        // return $this->query("SELECT * FROM events WHERE event_id != :id AND date_time > NOW() ORDER BY date_time ASC LIMIT 5;", ['id' => $id], "assoc")['result'];
-    }
-
     public function featured_count()
     {
         return $this->query("SELECT COUNT(*) as count FROM articles WHERE is_featured = 1;", [], "assoc")['result'][0];
@@ -74,11 +67,6 @@ class Article extends Model
     public function remove_oldest_featured()
     {
         return $this->query("UPDATE articles SET is_featured = 0 WHERE article_id = (SELECT article_id FROM articles WHERE is_featured = 1 ORDER BY updated_at ASC LIMIT 1);", [], "assoc")['result'][0];
-    }
-
-    public function update_featured($id)
-    {
-        return $this->query("UPDATE articles SET is_featured = 1, is_editor = 0 WHERE article_id = :id;", ['id' => $id], "assoc")['result'];
     }
 
     public function increase_view($id)

@@ -327,9 +327,8 @@ class AdminArticleController extends Controller
             // Remove the is_editor and selecting the oldest updated
             $article->remove_oldest_editor();
         }
-        $updatedArticle = $article->update_editor($id);
 
-        if($updatedArticle) {
+        if($article->update(['is_editor' => 1, 'is_featured' => 0], $id)) {
             toast("success", "Article Editor Picked Successfully");
         } else {
             toast("error", "Error Occured, Try Again Later");
@@ -358,15 +357,14 @@ class AdminArticleController extends Controller
             // Remove the is_editor and selecting the oldest updated
             $article->remove_oldest_featured();
         }
-        $updatedArticle = $article->update_featured($id);
 
-        if($updatedArticle) {
+        if($article->update(['is_featured' => 1, 'is_editor' => 0], $id)) {
             toast("success", "Article Featured Picked Successfully");
+            return redirect($redirectUrl);
         } else {
             toast("error", "Error Occured, Try Again Later");
+            return redirect($redirectUrl);
         }
-        // Redirect back to the articles management page in either case
-        return redirect($redirectUrl);
     }
 
     private function handleThumbnail(Request $request, $fetchData, $attributes)
