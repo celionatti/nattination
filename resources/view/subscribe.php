@@ -51,7 +51,7 @@ $user = user();
                 <p>Join our community and stay informed on what matters most to you.</p>
 
                 <?php if($user): ?>
-                <a href="<?= URL_ROOT . "/subscribe/{$user['user_id']}" ?>" class="btn btn-dark w-100 py-3">Subscribe Now</a>
+                <a href="<?= URL_ROOT . "/subscribe/{$user['user_id']}" ?>" class="btn btn-outline-primary w-100 py-3 shadow">Subscribe Now</a>
                 <?php endif; ?>
             </div>
         </div>

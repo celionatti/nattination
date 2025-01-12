@@ -47,7 +47,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
             <div class="col-md-12 col-lg-8 main-content">
 
-                <div class="post-content-body shadow p-3 lh-base link-body-emphasis text-black">
+                <div class="post-content-body shadow p-3 lh-lg text-white">
                     <?= StringUtils::create(htmlspecialchars_decode(nl2br($article['content']))) ?>
                 </div>
 
@@ -108,10 +108,10 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
 
 
 <!-- Start posts-entry -->
-<section class="section posts-entry posts-entry-sm bg-light">
+<section class="section posts-entry posts-entry-sm bg-body-tertiary border-bottom border-secondary border-2">
     <div class="container">
         <div class="row mb-4">
-            <div class="col-12 text-uppercase text-black">More Blog Posts</div>
+            <div class="col-12 text-uppercase text-body-secondary mt-2">More Blog Posts</div>
         </div>
         <div class="row">
             <?php foreach($mores as $more): ?>
@@ -123,7 +123,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                         </div>
                     </a>
                     <h3><a href="<?= URL_ROOT . "/articles/{$more['article_id']}" ?>" class="link-body-emphasis"><?= $more['title'] ?></a></h3>
-                    <p><?= StringUtils::create(htmlspecialchars_decode(nl2br($more['content'])))->excerpt(150) ?></p>
+                    <p class="link-body-emphasis"><?= StringUtils::create(htmlspecialchars_decode(nl2br($more['content'])))->excerpt(150) ?></p>
                 </div>
             </div>
             <?php endforeach; ?>

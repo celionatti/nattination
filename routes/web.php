@@ -45,6 +45,8 @@ $bolt->router->group(['prefix' => '/', []], function($router) {
     $router->post('/login', [AuthController::class, 'login_access']);
 
     $router->get('/logout', [AuthController::class, 'logout']);
+
+    $router->get('/profile/account/{:id}', [SiteController::class, 'profile']);
 });
 
 $bolt->router->get("/articles", [ArticleController::class, "articles"]);

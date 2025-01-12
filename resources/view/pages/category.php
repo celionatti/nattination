@@ -43,7 +43,7 @@ use celionatti\Bolt\Illuminate\Utils\StringUtils;
                     </a>
                     <div>
                         <span class="date"><?= TimeDateUtils::create($category['created_at'])->toCustomFormat("F jS, Y") ?> &bullet; <a class="text-danger"><?= $category['tags'] ?></a></span>
-                        <h2><a href="<?= URL_ROOT . "/articles/{$category['article_id']}" ?>" class="text-black"><?= $category['title'] ?></a></h2>
+                        <h2><a href="<?= URL_ROOT . "/articles/{$category['article_id']}" ?>" class="link-body-emphasis"><?= $category['title'] ?></a></h2>
                         <p><?= StringUtils::create(htmlspecialchars_decode(nl2br($category['content'])))->excerpt(230) ?></p>
                         <p><a href="<?= URL_ROOT . "/articles/{$category['article_id']}" ?>" class="btn btn-sm btn-outline-dark">Read More</a></p>
                     </div>

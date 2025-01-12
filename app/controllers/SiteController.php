@@ -67,13 +67,13 @@ class SiteController extends Controller
         $this->view->render("pages/search", $view);
     }
 
-    public function about()
+    public function profile()
     {
         $view = [
             
         ];
 
-        $this->view->render("about", $view);
+        $this->view->render("pages/profile", $view);
     }
 
     public function contact()

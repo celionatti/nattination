@@ -101,7 +101,7 @@ class AuthController extends Controller
         }
 
         // On success, redirect to login
-        setFormMessage(['success' => 'User created successfully!']);
+        toast("success", "Account Created! Now Login.");
         redirect(URL_ROOT . "/login");
     }
 
@@ -145,7 +145,6 @@ class AuthController extends Controller
 
         if($auth['success']) {
             toast("success", $auth['message']);
-            // FlashMessage::setMessage($auth['message'], $auth['type']);
             redirect(URL_ROOT);
         } else {
             toast("error", $auth['message']);

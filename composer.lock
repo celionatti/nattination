@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3a0e8e9f00ad81894a48ba4515a9f78",
+    "content-hash": "11530aadeb4ba6b9c924a8fca38cb6b2",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -77,16 +77,16 @@
         },
         {
             "name": "celionatti/bolt",
-            "version": "v1.0.18",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/celionatti/bolt.git",
-                "reference": "a561d8b4de23ae7a19b97858eb97bd7b779aa392"
+                "reference": "5a231cd80097257a95c1cdc6faca315076883df1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/celionatti/bolt/zipball/a561d8b4de23ae7a19b97858eb97bd7b779aa392",
-                "reference": "a561d8b4de23ae7a19b97858eb97bd7b779aa392",
+                "url": "https://api.github.com/repos/celionatti/bolt/zipball/5a231cd80097257a95c1cdc6faca315076883df1",
+                "reference": "5a231cd80097257a95c1cdc6faca315076883df1",
                 "shasum": ""
             },
             "require": {
@@ -121,9 +121,9 @@
             "description": "Bolt is a popular open-source content management system (CMS) and application framework that is designed to be easy to use and flexible. It's known for its simplicity and speed, making it a good choice for developers looking to create websites and web applications quickly.",
             "support": {
                 "issues": "https://github.com/celionatti/bolt/issues",
-                "source": "https://github.com/celionatti/bolt/tree/v1.0.18"
+                "source": "https://github.com/celionatti/bolt/tree/v2.0.0"
             },
-            "time": "2025-01-04T15:07:43+00:00"
+            "time": "2025-01-12T09:41:33+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1369,12 +1369,12 @@
             "version": "2.72.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
+                "url": "https://github.com/CarbonPHP/carbon.git",
                 "reference": "1e9d50601e7035a4c61441a208cb5bed73e108c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/1e9d50601e7035a4c61441a208cb5bed73e108c5",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/1e9d50601e7035a4c61441a208cb5bed73e108c5",
                 "reference": "1e9d50601e7035a4c61441a208cb5bed73e108c5",
                 "shasum": ""
             },
